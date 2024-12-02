@@ -1,146 +1,149 @@
-import React from "react";
 import loginBg from "../assets/login-bg.png";
 import logoBg from "../assets/login-logo-bg.png";
+import { Link } from "react-router-dom";
+import useLogin from "../hooks/useLogin";
 
-const LoginPage = () => {
+export default function LoginPage() {
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    setUser,
+    errorMessage,
+    setErrorMessage,
+    isError,
+    setIsError,
+    handleLogin,
+  } = useLogin();
   return (
-    <div className="min-h-screen flex items-center bg-gray-100">
-      {/* Left Section (Background Image) */}
-      <div className="relative w-[712px] h-[1024px]">
-        {/* Background Image */}
-        <img
-          src={loginBg}
-          alt="Background"
-          className="absolute w-full h-full object-cover"
-        />
-
-        {/* Container for Logo and Text */}
-        <div
-          className="absolute top-[263px] left-[64px] flex flex-col gap-[10px]"
-          style={{ width: "500px", height: "311px", opacity: 1 }}
-        >
-          {/* Logo Image */}
+    <>
+      <div className="flex items-center bg-gray-100 min-h-screen">
+        {/* Left Section (Background Image) */}
+        <div className="relative hidden lg:block w-full max-w-[712px] h-[740px]">
           <img
-            src={logoBg}
-            alt="Logo"
-            className="w-full h-auto object-contain"
+            src={loginBg}
+            alt="Background"
+            className="absolute w-full h-full object-cover"
           />
-
-          {/* Text and logo */}
-          <p
-            className="text-[#FFFFFF] text-center"
-            style={{
-              fontFamily: "Roboto",
-              fontSize: "24px",
-              fontWeight: 400,
-              lineHeight: "28px",
-              textAlign: "center",
-              textUnderlinePosition: "from-font",
-              textDecorationSkipInk: "none",
-            }}
-          >
-            Selamat datang di Agreenery, platform
-            <br />
-            pertanian terintegrasi yang membantu <br />
-            Anda meraih hasil panen terbaik.
-          </p>
-        </div>
-      </div>
-
-      {/* Right Section (Empty or Form Content) */}
-      <div className="min-h-screen flex flex-col justify-start p-10">
-        {/* Placeholder for other content */}
-        <div style={{ marginTop: "116px", marginLeft: "168px" }}>
-          <h1
-            className="text-left text-xl"
-            style={{
-              fontFamily: "Roboto, sans-serif",
-              fontSize: "48px",
-              fontWeight: 700,
-              lineHeight: "60px",
-              textAlign: "left",
-              textUnderlinePosition: "from-font",
-              textDecorationSkipInk: "none",
-            }}
-          >
-            <span className="text-primary-400">Sign In</span> to your account
-          </h1>
-          <form className="max-w-sm ml-0" style={{ paddingTop: "60px" }}>
-            <div className="mb-5">
-              <label
-                for="email"
-                className="font-roboto-700 text-neutral-400 opacity-50"
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                className="text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 :border- bg-neutral-200 opacity-50"
-                placeholder="name@gmail.com"
-                required
-              />
-            </div>
-            <div className="mb-5">
-              <label
-                for="password"
-                className="font-roboto-700 text-neutral-400 opacity-50"
-              >
-                Password
-              </label>
-              <input
-                placeholder="input password"
-                type="password"
-                id="password"
-                className="text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 :border- bg-neutral-200 opacity-50"
-                required
-              />
-            </div>
-            <div className="flex justify-between items-center mb-5">
-              <label className="text-neutral-400 opacity-50 text-right w-full pr-4">
-                Remember me
-              </label>
-              <div className="relative inline-block">
-                <input
-                  type="checkbox"
-                  id="hs-small-solid-switch"
-                  className="sr-only peer"
-                />
-                <div
-                  className="w-11 h-6 bg-gray-200 rounded-full peer-checked:bg-blue-600 transition-colors duration-200 cursor-pointer"
-                  onClick={() =>
-                    document.getElementById("hs-small-solid-switch").click()
-                  } // Forward click to input
-                ></div>
-                <div
-                  className="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transform transition-transform duration-200 peer-checked:translate-x-5 cursor-pointer"
-                  onClick={() =>
-                    document.getElementById("hs-small-solid-switch").click()
-                  } // Forward click to input
-                  style={{ zIndex: "10" }}
-                ></div>
-              </div>
-            </div>
-
-            <div>
-              <p className=" text-primary-500">Forgot password?</p>
-            </div>
-
-            <button
-              type="button"
-              className="w-full bg-primary-300 text-white font-semibold py-3 rounded-lg hover:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-400 mt-4 text-neutral-100"
-            >
-              Sign In
-            </button>
-            <p className=" text-center pt-4">
-              Don't have an account?
-              <span className=" text-secondary-500"> Sign Up</span>
+          <div className="absolute top-[153px] left-[64px] flex flex-col gap-2 w-[500px] h-[311px]">
+            <img
+              src={logoBg}
+              alt="Logo"
+              className="w-full h-auto object-contain"
+            />
+            <p className="text-neutral-100 text-center text-2xl font-roboto-400">
+              Selamat datang di Agreenery, platform
+              <br />
+              pertanian terintegrasi yang membantu <br />
+              Anda meraih hasil panen terbaik.
             </p>
-          </form>
+          </div>
+        </div>
+
+        {/* Right Section (Form Content) */}
+        <div className="flex flex-col justify-center px-8 sm:px-16 lg:px-24 py-10 w-full">
+          <div className="mx-3 lg:mx-[90px]">
+            <h1 className="text-4xl font-roboto-700 text-left text-neutral-500 mb-24">
+              <span className="text-primary-500">Sign In</span> to your <br />
+              account
+            </h1>
+
+            {/* Alert untuk error */}
+            {isError && (
+              <div
+                className="flex items-center p-4 mb-4 text-sm bg-error-100 text-neutral-100 border rounded-lg bg-error-50 "
+                role="alert"
+              >
+                <svg
+                  className="flex-shrink-0 inline w-4 h-4 me-3"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                </svg>
+                <span className="sr-only">Info</span>
+                <div>
+                  <span className="font-medium"> {errorMessage}</span>{" "}
+                </div>
+              </div>
+            )}
+
+            <form className="space-y-6" onSubmit={handleLogin}>
+              <div className="mb-5">
+                <label
+                  htmlFor="email"
+                  className="block text-neutral-400 text-sm font-medium"
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className={`mt-1 w-full px-4 py-3 bg-neutral-200 rounded-lg border text-sm text-neutral-700 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-primary-300 ${
+                    isError ? "border-error-400" : "border-neutral-300"
+                  }`}
+                  placeholder="name@gmail.com"
+                  required
+                />
+              </div>
+              <div className="mb-5 relative">
+                <label
+                  htmlFor="password"
+                  className="block text-neutral-400 text-sm font-medium"
+                >
+                  Password
+                </label>
+                <div className="relative">
+                  <input
+                    type="password"
+                    id="password"
+                    value={password}
+                    placeholder="Masukkan Password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    className={`mt-1 w-full px-4 py-3 bg-neutral-200 rounded-lg border text-sm text-neutral-700 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-primary-300 ${
+                      isError ? "border-error-400" : "border-neutral-300"
+                    }`}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="flex justify-between items-center mb-5">
+                <span className="text-neutral-500 opacity-50 text-right w-full pr-4">
+                  Remember me
+                </span>
+
+                <label className="inline-flex items-center cursor-pointer">
+                  <input type="checkbox" value="" className="sr-only peer" />
+                  <div className="relative w-11 h-6 bg-neutral-300 after:border-neutral-100 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-100 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-neutral-100 after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-neutral-100 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-400"></div>
+                </label>
+              </div>
+
+              <div>
+                <p className="text-primary-500 text-sm">Forgot password?</p>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-3 bg-primary-500 text-neutral-100 font-semibold rounded-lg hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-400"
+              >
+                Sign In
+              </button>
+
+              <p className="text-center pt-4 text-sm">
+                Don't have an account?{" "}
+                <Link to={"/register"}>
+                  <span className="text-primary-500">Sign Up</span>
+                </Link>
+              </p>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
-};
-
-export default LoginPage;
+}
