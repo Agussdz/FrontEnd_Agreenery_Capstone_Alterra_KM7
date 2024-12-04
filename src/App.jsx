@@ -5,6 +5,7 @@ import UserProtectedRoutes from "./routes/UserProtectedRoutes";
 import AdminProtectedRoutes from "./routes/AdminProtectedRoutes";
 import LoadingAnimation from "./components/LoadingAnimation";
 import AlertPassword from "./components/AlertPassword";
+import SideAndNav from "./pages/SideAndNav";
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
           {/* Public Routes */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/sidenav" element={<SideAndNav />} />
+
 
           {/* User Private Route */}
           <Route element={<UserProtectedRoutes />}>

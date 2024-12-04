@@ -60,7 +60,7 @@ export default function AlertPassword({
             padding: "13px 28px",
             borderRadius: "6px 0 0 0",
           }}
-          className="bg-primary-300 text-white font-semibold hover:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-400 text-neutral-100"
+          className="bg-primary-300 font-semibold hover:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-400 text-neutral-100"
         >
           Lanjutkan
         </button>
