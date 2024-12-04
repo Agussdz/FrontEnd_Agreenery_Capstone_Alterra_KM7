@@ -1,10 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./pages";
 
 function App() {
   return (
     <>
-      <h1 className="text-primary-600 text-5xl font-roboto-700">Tes</h1>
+   
+    <Home />
+     
       {/* Navbar Taruh di Apps <Navbar/> */}
+    
       <Router>
         <Routes>{/* <Route path="/" element={<LandingPage />} /> */}</Routes>
       </Router>
