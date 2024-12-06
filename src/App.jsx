@@ -6,6 +6,7 @@ import AdminProtectedRoutes from "./routes/AdminProtectedRoutes";
 import LoadingAnimation from "./components/LoadingAnimation";
 import AlertPassword from "./components/AlertPassword";
 import SideAndNav from "./pages/SideAndNav";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/sidenav" element={<SideAndNav />} />
+          <Route path="/home" element={<HomePage />} />
 
 
           {/* User Private Route */}
