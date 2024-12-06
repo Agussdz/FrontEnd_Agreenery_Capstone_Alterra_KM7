@@ -5,14 +5,15 @@ import { Facebook, Instagram, Youtube, Mail, Phone } from 'lucide-react';
 const Footer = () => {
   return (
     <div className="bg-primary-200 py-10">
-      <div className="container mx-auto flex justify-between ">
-        <div className=" mx-20  w-[700px]">
-          <img src={logo} alt="Logo" className="w-[264px] -mt-28 " />
-          <p className="text-neutral-100 text-[15px] -mt-14 leading-7 ">
-            Solusi Pertanian Terintegrasi yang Membantu Petani <br /> 
-            Mengelola Lahan dengan Cerdas, Meningkatkan <br /> 
+      <div className="container  flex flex-col lg:flex-row justify-between gap-10 ">
+        {/* Logo and About */}
+        <div className="w-full lg:w-[700px] mx-20">
+          <img src={logo} alt="Logo" className="w-[264px] -mt-28" />
+          <p className="text-neutral-100 text-[15px] -mt-14 leading-7">
+            Solusi Pertanian Terintegrasi yang Membantu Petani <br />
+            Mengelola Lahan dengan Cerdas, Meningkatkan <br />
             Produktivitas, dan Mendukung Keberlanjutan <br />
-             Lingkungan untuk Masa Depan yang Lebih Baik.
+            Lingkungan untuk Masa Depan yang Lebih Baik.
           </p>
           <div className="flex mt-10 gap-4">
             <div className="bg-neutral-100 rounded-full p-4">
@@ -27,20 +28,26 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="container mx-20 flex justify-start items-start px-10">
-          <div className="w-[200px]">
-            <h1 className="text-neutral-100 font-roboto-500 text-2xl  mb-4 mt-1">Navigation</h1>
+        {/* Navigation and Contact */}
+        <div className="w-full flex flex-col lg:flex-row gap-10">
+          {/* Navigation */}
+          <div className="w-full lg:w-[200px]">
+            <h1 className="text-neutral-100 font-roboto-500 text-2xl mb-4 mt-1">
+              Navigation
+            </h1>
             <ul className="space-y-4 text-neutral-100 text-sm pt-3">
-              <li className='cursor-pointer'>Home</li>
-              <li className='cursor-pointer'>Features</li>
-              <li className='cursor-pointer'>About Us</li>
-              <li className='cursor-pointer'>Testimoni</li>
+              <li className="cursor-pointer hover:text-primary-400">Home</li>
+              <li className="cursor-pointer hover:text-primary-400">Features</li>
+              <li className="cursor-pointer hover:text-primary-400">About Us</li>
+              <li className="cursor-pointer hover:text-primary-400">Testimoni</li>
             </ul>
           </div>
 
           {/* Contact Us */}
-          <div className=" ml-24">
-            <h1 className="text-neutral-100 text-2xl mb-4 mt-1 font-roboto-500">Contact Us</h1>
+          <div>
+            <h1 className="text-neutral-100 text-2xl mb-4 mt-1 font-roboto-500">
+              Contact Us
+            </h1>
             <ul className="space-y-4 text-neutral-100 text-sm pt-2">
               <li className="flex items-center gap-2">
                 <Mail size={20} /> contoh@email.com
@@ -51,7 +58,6 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-
       </div>
 
       {/* Footer Copyright */}
