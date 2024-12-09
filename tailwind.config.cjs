@@ -8,7 +8,7 @@ export default {
     },
     fontWeight: {
       "roboto-300": "300",
-      "roboto-400": "400", // font wight roboto
+      "roboto-400": "400", // font weight roboto
       "roboto-500": "500",
       "roboto-700": "700",
     },
@@ -72,7 +72,9 @@ export default {
         500: "#1BA73B",
       },
     },
-    extend: {},
+    extend: {
+      scrollBehavior: ["smooth"], // Mengaktifkan scroll-behavior smooth
+    },
   },
   plugins: [],
 };

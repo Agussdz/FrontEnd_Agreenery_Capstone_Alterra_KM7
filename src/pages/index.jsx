@@ -6,7 +6,7 @@ import cloud from '../assets/cloud-sun.png'
 import message from '../assets/message.png'
 import forum from '../assets/forum.png'
 import artikel from '../assets/artikel.png'
-import { ArrowRight, CloudSunRain, MoveRight } from 'lucide-react'
+import { ArrowRight,} from 'lucide-react'
 import card1 from '../assets/card1.png'
 import car2 from '../assets/car2.png'
 import card3 from '../assets/card3.png'
@@ -39,7 +39,7 @@ const Home = () => {
           </div>
         </div>
  
-        <div className="h-[707px] p-10 mb-36">
+        <div id='feature' className="h-[707px] p-10 mb-36">
           <h1 className="text-primary-400 text-center font-roboto-700 text-[40px]">
             <span className="text-secondary-200">Fitur</span> Unggulan
           </h1>
@@ -189,7 +189,7 @@ const Home = () => {
         </div>
 
                 
-        <div className="relative h-auto sm:h-[549px] mt-10 mb-10 bg">
+        <div id="about" className="relative h-auto sm:h-[549px] mt-10 mb-10 bg">
           <div className="absolute inset-0 bg-primary-100 opacity-20 z-0"></div>
           <div className="relative flex flex-col sm:flex-row items-center z-10 mx-4 sm:mx-16">
             <img
@@ -208,7 +208,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="mb-16 py-10">
+        <div id='testimonies' className="mb-16 py-10">
           <h1 className="text-center text-4xl font-roboto-700 mb-10">
             <span className="text-secondary-400">Apa</span> <span className="text-primary-400">Kata Mereka?</span>
           </h1>
@@ -270,13 +270,13 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="mt-8 flex justify-end cursor-pointer group mx-20 mx-28 ">
+          <div className="mt-8 flex justify-end cursor-pointer group mx-28 ">
             <h1 className="text-primary-400 transform transition-transform duration-300 group-hover:translate-x-2 ">
               Lihat Lebih Banyak
             </h1>
             <ArrowRight className="ml-2 text-primary-400 transform transition-transform duration-300 group-hover:translate-x-2 " />
           </div>
-        </div> */
+        </div>
          <Footer/>
     </>
   )
