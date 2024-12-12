@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import useLocation from "../hooks/useLocation";
 import { SidebarComponent } from "../components/SidebarComponent"; // Tambahin komponen ini di setiap page
 import { NavbarComponent } from "../components/NavbarComponent"; //Tambahin komponen ini di setiap page
 import { HiOutlineArrowLeft, HiOutlineMenu } from "react-icons/hi"; // Ikon hamburger dan Arrow tambahin di setiap page
@@ -6,6 +8,32 @@ import herocuaca from "../assets/hero-cuaca.png";
 
 export default function FormCuaca() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const navigate = useNavigate(); // Initialize navigate
+  const {
+    provinces,
+    regencies,
+    districts,
+    villages,
+    selectedProvince,
+    setSelectedProvince,
+    selectedRegency,
+    setSelectedRegency,
+    selectedDistrict,
+    setSelectedDistrict,
+  } = useLocation();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Mencegah perilaku default form (reload halaman).
+
+    // Validasi: Cek apakah kecamatan sudah dipilih
+    if (!selectedDistrict) {
+      alert("Harap pilih lokasi hingga kecamatan."); // Tampilkan peringatan jika kecamatan belum dipilih
+      return; // Menghentikan eksekusi jika validasi gagal
+    }
+
+    // Navigasikan ke halaman "WeatherDetails" dengan membawa data "region" (kecamatan yang dipilih)
+    navigate("/weather-details", { state: { region: selectedDistrict } });
+  };
 
   return (
     <>
@@ -42,88 +70,107 @@ export default function FormCuaca() {
                   </p>
                 </div>
                 <div className="form ">
-                  <form className="space-y-6">
+                  <form className="space-y-6" onSubmit={handleSubmit}>
                     <div className="mb-5">
                       <label
-                        htmlFor="display_name"
+                        htmlFor="provinsi"
                         className="block text-neutral-400 text-sm font-medium"
                       >
                         Provinsi
                       </label>
                       <select
-                        type="select"
                         id="provinsi"
                         name="provinsi"
                         className="mt-1 w-full px-4 py-3 rounded-lg border border-neutral-300 bg-neutral-200 text-sm text-neutral-700 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-primary-300"
+                        value={selectedProvince || ""}
+                        onChange={(e) => setSelectedProvince(e.target.value)}
                         required
                       >
-                        <option value="" disabled selected>
+                        <option value="" disabled>
                           Pilih Provinsi
                         </option>
-                        {/* Tambahkan opsi lainnya */}
+                        {provinces.map((province) => (
+                          <option key={province.code} value={province.code}>
+                            {province.name}
+                          </option>
+                        ))}
                       </select>
                     </div>
                     <div className="mb-5">
                       <label
-                        htmlFor="email"
+                        htmlFor="kota"
                         className="block text-neutral-400 text-sm font-medium"
                       >
                         Kota/Kabupaten
                       </label>
                       <select
-                        type="select"
                         id="kota"
                         name="kota"
                         className="mt-1 w-full px-4 py-3 rounded-lg border border-neutral-300 bg-neutral-200 text-sm text-neutral-700 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-primary-300"
+                        value={selectedRegency || ""}
+                        onChange={(e) => setSelectedRegency(e.target.value)}
+                        disabled={!selectedProvince}
                         required
                       >
-                        <option value="" disabled selected>
+                        <option value="" disabled>
                           Pilih Kota/Kabupaten
                         </option>
-                        {/* Tambahkan opsi lainnya */}
+                        {regencies.map((regency) => (
+                          <option key={regency.code} value={regency.code}>
+                            {regency.name}
+                          </option>
+                        ))}
                       </select>
                     </div>
                     <div className="mb-5">
                       <label
-                        htmlFor="phone"
+                        htmlFor="kecamatan"
                         className="block text-neutral-400 text-sm font-medium"
                       >
                         Kecamatan
                       </label>
                       <select
-                        type="select"
                         id="kecamatan"
                         name="kecamatan"
                         className="mt-1 w-full px-4 py-3 rounded-lg border border-neutral-300 bg-neutral-200 text-sm text-neutral-700 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-primary-300"
+                        value={selectedDistrict || ""}
+                        onChange={(e) => setSelectedDistrict(e.target.value)}
+                        disabled={!selectedRegency}
                         required
                       >
-                        <option value="" disabled selected>
+                        <option value="" disabled>
                           Pilih Kecamatan
                         </option>
-                        {/* Tambahkan opsi lainnya */}
+                        {districts.map((district) => (
+                          <option key={district.code} value={district.code}>
+                            {district.name}
+                          </option>
+                        ))}
                       </select>
                     </div>
                     <div className="mb-5 relative">
                       <label
-                        htmlFor="password"
+                        htmlFor="kelurahan"
                         className="block text-neutral-400 text-sm font-medium"
                       >
                         Desa/Kelurahan
                       </label>
-                      <div className="relative">
-                        <select
-                          type="select"
-                          id="kelurahan"
-                          name="kelurahan"
-                          className="mt-1 w-full px-4 py-3 rounded-lg border border-neutral-300 bg-neutral-200 text-sm text-neutral-700 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-primary-300"
-                          required
-                        >
-                          <option value="" disabled selected>
-                            Pilih Desa/Kelurahan
+                      <select
+                        id="kelurahan"
+                        name="kelurahan"
+                        className="mt-1 w-full px-4 py-3 rounded-lg border border-neutral-300 bg-neutral-200 text-sm text-neutral-700 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-primary-300"
+                        disabled={!selectedDistrict}
+                        required
+                      >
+                        <option value="" disabled selected>
+                          Pilih Desa/Kelurahan
+                        </option>
+                        {villages.map((village) => (
+                          <option key={village.code} value={village.code}>
+                            {village.name}
                           </option>
-                          {/* Tambahkan opsi lainnya */}
-                        </select>
-                      </div>
+                        ))}
+                      </select>
                     </div>
 
                     <button

@@ -8,6 +8,7 @@ import AlertPassword from "./components/AlertPassword";
 import SideAndNav from "./pages/SideAndNav";
 import HeroCuaca from "./pages/HeroCuaca";
 import FormCuaca from "./pages/FormCuaca";
+import WeatherDetails from "./pages/WeatherDetails";
 
 function App() {
   return (
@@ -18,13 +19,14 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/sidenav" element={<SideAndNav />} />
-          <Route path="/formcuaca" element={<FormCuaca/>} />
           <Route path="/cuaca" element={<HeroCuaca/>} />
 
 
           {/* User Private Route */}
           <Route element={<UserProtectedRoutes />}>
             <Route path="/homepage" element={<AlertPassword />} />
+            <Route path="/formcuaca" element={<FormCuaca/>} />
+            <Route path="/weather-details" element={<WeatherDetails/>} />
           </Route>
 
           {/* Admin Private Route */}
