@@ -9,6 +9,9 @@ import SideAndNav from "./pages/SideAndNav";
 import HeroCuaca from "./pages/HeroCuaca";
 import FormCuaca from "./pages/FormCuaca";
 import WeatherDetails from "./pages/WeatherDetails";
+import TodayWeatherPage from "./pages/TodayWeatherPage";
+import CurentWeatherPage from "./pages/CurrentWeatherPage";
+import DailyWeatherPage from "./pages/DailyWeatherPage";
 
 function App() {
   return (
@@ -27,6 +30,9 @@ function App() {
             <Route path="/homepage" element={<AlertPassword />} />
             <Route path="/formcuaca" element={<FormCuaca/>} />
             <Route path="/weather-details" element={<WeatherDetails/>} />
+            <Route path="/todayweather" element={<TodayWeatherPage/>} />
+            <Route path="/currentweather" element={<CurentWeatherPage/>} />
+            <Route path="/dailyweather" element={<DailyWeatherPage/>} />
           </Route>
 
           {/* Admin Private Route */}
