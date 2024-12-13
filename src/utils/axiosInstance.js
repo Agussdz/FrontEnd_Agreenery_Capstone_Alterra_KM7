@@ -4,9 +4,6 @@ import useLoginStore from "../stores/useLoginStore";
 // Membuat instance axios
 const axiosInstance = axios.create({
   baseURL: "https://agreenery.cloud/api/v1",
-  headers: {
-    "Content-Type": "application/json",
-  },
 });
 
 // Interceptor untuk menambahkan token di setiap request

@@ -27,7 +27,7 @@ export default function SideAndNav() {
           </div>
 
           {/* Content */}
-          <div className="relative">
+          <div className="relative lg:pl-64">
             {/* Navbar Component */}
             <NavbarComponent />
             {/*Konten Fitur bisa dimulai di sini */}
