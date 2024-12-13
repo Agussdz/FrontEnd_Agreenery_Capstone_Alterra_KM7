@@ -8,6 +8,8 @@ import UserProtectedRoutes from "./routes/UserProtectedRoutes";
 import AdminProtectedRoutes from "./routes/AdminProtectedRoutes";
 import AlertPassword from "./components/AlertPassword";
 import LoadingAnimation from "./components/LoadingAnimation";
+import AdminKategoriPage from "./pages/AdminKategoriPage";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
   return (
@@ -29,6 +31,9 @@ function App() {
         {/* Admin Private Route */}
         <Route element={<AdminProtectedRoutes />}>
           <Route path="/dashboard" element={<LoadingAnimation />} />
+          <Route path="/kategori" element={<AdminKategoriPage />} />
+          <Route path="/dashboardadmin" element={<AdminDashboard />} />
+
         </Route>
       </Routes>
     </Router> 
