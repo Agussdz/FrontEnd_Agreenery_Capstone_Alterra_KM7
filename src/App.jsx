@@ -8,6 +8,7 @@ import UserProtectedRoutes from "./routes/UserProtectedRoutes";
 import AdminProtectedRoutes from "./routes/AdminProtectedRoutes";
 import AlertPassword from "./components/AlertPassword";
 import LoadingAnimation from "./components/LoadingAnimation";
+import ChatbotPage from "./pages/ChatbotPage";
 
 function App() {
   return (
@@ -18,12 +19,13 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/sidenav" element={<SideAndNav />} /> 
-        <Route path="/perawatan" element={<PerawatanTanaman />} /> 
+        <Route path="/sidenav" element={<SideAndNav />} />
+        <Route path="/perawatan" element={<PerawatanTanaman />} />
 
         {/* User Private Route */}
         <Route element={<UserProtectedRoutes />}>
-          <Route path="/homepage" element={<AlertPassword />} />
+          <Route path="/homepage" element={<SideAndNav />} />
+          <Route path="/chatbot" element={<ChatbotPage />} />
         </Route>
 
         {/* Admin Private Route */}
@@ -31,7 +33,7 @@ function App() {
           <Route path="/dashboard" element={<LoadingAnimation />} />
         </Route>
       </Routes>
-    </Router> 
+    </Router>
   );
 }
 
