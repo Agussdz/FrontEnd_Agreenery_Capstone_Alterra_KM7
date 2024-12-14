@@ -1,29 +1,27 @@
 import { Sidebar } from "flowbite-react";
 import logosidebar from "../assets/logo-white.png";
+import { Link } from "react-router-dom";
 
 export function AdminSidebarComponent({ isSidebarOpen }) {
   return (
     <div className="flex h-screen">
       <div
-        className={`fixed z-50 inset-y-0 left-0 shadow-lg border-r transition-transform transform ${
+        className={`fixed z-50 inset-y-0 left-0 shadow-lg border-r  transition-transform transform ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } lg:translate-x-0 lg:static w-64`}
+        } lg:translate-x-0 lg:fixed w-64`}
       >
         <Sidebar
           aria-label="Sidebar with multi-level dropdown example"
-          className="h-full"
+          className=" bg-primary-400 relative "
         >
-          <Sidebar.Items>
-            <Sidebar.ItemGroup>
-              <Sidebar.Item href="#">
+          <Sidebar.Items className="bg-primary-400 min-h-full absolute left-0 top-0 min-w-64  ">
+            <Sidebar.ItemGroup className="bg-primary-400">
+              <Sidebar.Item className="hover:bg-primary-600 cursor-pointer">
                 <img src={logosidebar} alt="Logo" />
               </Sidebar.Item>
 
               {/* Dashboard */}
-              <Sidebar.Item
-                className=" font-roboto-600 text-sm text-neutral-600"
-                href="#"
-              >
+              <Sidebar.Item className=" font-roboto-600 text-sm hover:bg-primary-600 cursor-pointer">
                 <svg
                   width="24"
                   height="24"
@@ -54,10 +52,7 @@ export function AdminSidebarComponent({ isSidebarOpen }) {
               </Sidebar.Item>
 
               {/* Notifikasi */}
-              <Sidebar.Item
-                className=" font-roboto-600 text-sm text-neutral-600"
-                href="#"
-              >
+              <Sidebar.Item className=" font-roboto-600 text-sm text-neutral-600 hover:bg-primary-600 cursor-pointer">
                 <svg
                   width="24"
                   height="24"
@@ -88,10 +83,7 @@ export function AdminSidebarComponent({ isSidebarOpen }) {
               </Sidebar.Item>
 
               {/* Perawatan Tanaman */}
-              <Sidebar.Item
-                className=" font-roboto-600 text-sm text-neutral-600"
-                href="#"
-              >
+              <Sidebar.Item className=" font-roboto-600 text-sm text-neutral-600 hover:bg-primary-600 cursor-pointer">
                 <svg
                   width="24"
                   height="24"
@@ -121,10 +113,11 @@ export function AdminSidebarComponent({ isSidebarOpen }) {
                 </span>
               </Sidebar.Item>
 
-              {/* Langkah-langkah */}
+              {/* Artikel */}
               <Sidebar.Item
-                className=" font-roboto-600 text-sm text-neutral-600"
-                href="#"
+                as={Link}
+                to="/admin-article"
+                className=" font-roboto-600 text-sm text-neutral-600 hover:bg-primary-600 cursor-pointer"
               >
                 <svg
                   width="24"
@@ -163,10 +156,7 @@ export function AdminSidebarComponent({ isSidebarOpen }) {
                 </span>
               </Sidebar.Item>
               {/* Komunitas Petani */}
-              <Sidebar.Item
-                className=" font-roboto-600 text-sm text-neutral-600"
-                href="#"
-              >
+              <Sidebar.Item className=" font-roboto-600 text-sm text-neutral-600 hover:bg-primary-600 cursor-pointer">
                 <svg
                   width="24"
                   height="24"

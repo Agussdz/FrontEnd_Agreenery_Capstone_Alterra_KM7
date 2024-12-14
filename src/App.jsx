@@ -31,8 +31,8 @@ function App() {
         {/* Admin Private Route */}
         <Route element={<AdminProtectedRoutes />}>
           <Route path="/dashboard" element={<LoadingAnimation />} />
-          <Route path="/kategori" element={<AdminKategoriPage />} />
           <Route path="/dashboardadmin" element={<AdminDashboard />} />
+          <Route path="/kategori" element={<AdminKategoriPage />} />
 
         </Route>
       </Routes>
