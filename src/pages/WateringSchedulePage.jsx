@@ -139,6 +139,14 @@ export default function SideAndNav() {
           Swal.close();
         }
       } catch (error) {
+        Swal.close();
+        Swal.fire({
+          title: "Gagal",
+          text: "Terjadi kesalahan saat menghapus jadwal",
+          icon: "error",
+          confirmButtonText: "Okay",
+          confirmButtonColor: "#3DAC21",
+        });
         console.log("error when deleting schedule: ", error)
       }
     }

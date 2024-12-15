@@ -255,7 +255,7 @@ export default function SideAndNav() {
                                         >
                                             Lampirkan Gambar Tanamanmu
                                         </label>
-                                        <div className="flex flex-row items-start gap-2">
+                                        <div className="flex flex-row items-center gap-2">
                                             <div>
                                                 <input
                                                     type="file"
