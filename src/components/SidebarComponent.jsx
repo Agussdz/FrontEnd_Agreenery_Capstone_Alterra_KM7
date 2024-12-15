@@ -17,7 +17,7 @@ export function SidebarComponent({ isSidebarOpen }) {
           <Sidebar.Items>
             <Sidebar.ItemGroup>
               <Sidebar.Item>
-                <img src={logosidebar} alt="Logo" />
+                <img className="my-6" src={logosidebar} alt="Logo" />
               </Sidebar.Item>
 
               {/* Home */}

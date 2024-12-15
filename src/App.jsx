@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/index";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import WateringSchedulePage from "./pages/WateringSchedulePage";
+import WateringScheduleFormPage from "./pages/WateringScheduleFormPage";
 import SideAndNav from "./pages/SideAndNav";
 import PerawatanTanaman from "./pages/PerawatanTanaman";
 import UserProtectedRoutes from "./routes/UserProtectedRoutes";
@@ -26,6 +28,9 @@ function App() {
         <Route element={<UserProtectedRoutes />}>
           <Route path="/homepage" element={<SideAndNav />} />
           <Route path="/chatbot" element={<ChatbotPage />} />
+          <Route path="/jadwal-penyiraman" element={<WateringSchedulePage />} />
+          <Route path="/jadwal-penyiraman/add" element={<WateringScheduleFormPage />} />
+          <Route path="/jadwal-penyiraman/edit/:id" element={<WateringScheduleFormPage />} />
         </Route>
 
         {/* Admin Private Route */}
