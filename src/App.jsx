@@ -22,17 +22,16 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/sidenav" element={<SideAndNav />} />
-          <Route path="/cuaca" element={<HeroCuaca/>} />
-
 
           {/* User Private Route */}
           <Route element={<UserProtectedRoutes />}>
             <Route path="/homepage" element={<AlertPassword />} />
-            <Route path="/formcuaca" element={<FormCuaca/>} />
-            <Route path="/weather-details" element={<WeatherDetails/>} />
-            <Route path="/todayweather" element={<TodayWeatherPage/>} />
-            <Route path="/currentweather" element={<CurentWeatherPage/>} />
-            <Route path="/dailyweather" element={<DailyWeatherPage/>} />
+            <Route path="/cuaca" element={<HeroCuaca />} />
+            <Route path="/formcuaca" element={<FormCuaca />} />
+            <Route path="/weather-details" element={<WeatherDetails />} />
+            <Route path="/todayweather" element={<TodayWeatherPage />} />
+            <Route path="/currentweather" element={<CurentWeatherPage />} />
+            <Route path="/dailyweather" element={<DailyWeatherPage />} />
           </Route>
 
           {/* Admin Private Route */}
