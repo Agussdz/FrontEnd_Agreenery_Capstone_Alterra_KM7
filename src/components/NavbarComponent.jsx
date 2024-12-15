@@ -1,8 +1,16 @@
 import React from "react";
 import { Dropdown, Avatar } from "flowbite-react";
 import { Link } from "react-router-dom";
+import useLoginStore from "../stores/useLoginStore";
 
 export function NavbarComponent() {
+  const logout = useLoginStore((state) => state.logout);
+
+  const handleSignOut = () => {
+    logout();
+    window.location.href = "/login";
+  };
+
   return (
     <header className="antialiased">
       <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
@@ -109,11 +117,17 @@ export function NavbarComponent() {
                   mesiasi@gmail.com
                 </span>
               </Dropdown.Header>
-              <Dropdown.Item className=" text-primary-700">
-                Account
-              </Dropdown.Item>
+              <Link to="/user-profile">
+                <Dropdown.Item className=" text-primary-700">
+                  Account
+                </Dropdown.Item>
+              </Link>
+
               <Dropdown.Item className=" text-primary-700">FAQ</Dropdown.Item>
-              <Dropdown.Item className=" text-primary-700">
+              <Dropdown.Item
+                onClick={handleSignOut}
+                className=" text-primary-700"
+              >
                 Sign out
               </Dropdown.Item>
             </Dropdown>
