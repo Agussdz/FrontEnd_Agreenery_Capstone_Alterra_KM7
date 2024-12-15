@@ -11,6 +11,8 @@ import AdminProtectedRoutes from "./routes/AdminProtectedRoutes";
 import AlertPassword from "./components/AlertPassword";
 import LoadingAnimation from "./components/LoadingAnimation";
 import ChatbotPage from "./pages/ChatbotPage";
+import ArticlePage from "./pages/ArticlePage";
+import ArticleDetailsPage from "./pages/ArticleDetailsPage";
 
 function App() {
   return (
@@ -29,8 +31,19 @@ function App() {
           <Route path="/homepage" element={<SideAndNav />} />
           <Route path="/chatbot" element={<ChatbotPage />} />
           <Route path="/jadwal-penyiraman" element={<WateringSchedulePage />} />
-          <Route path="/jadwal-penyiraman/add" element={<WateringScheduleFormPage />} />
-          <Route path="/jadwal-penyiraman/edit/:id" element={<WateringScheduleFormPage />} />
+          <Route
+            path="/jadwal-penyiraman/add"
+            element={<WateringScheduleFormPage />}
+          />
+          <Route
+            path="/jadwal-penyiraman/edit/:id"
+            element={<WateringScheduleFormPage />}
+          />
+          <Route path="/artikel-pertanian" element={<ArticlePage />} />
+          <Route
+            path="/artikel-pertanian/:id"
+            element={<ArticleDetailsPage />}
+          />
         </Route>
 
         {/* Admin Private Route */}
