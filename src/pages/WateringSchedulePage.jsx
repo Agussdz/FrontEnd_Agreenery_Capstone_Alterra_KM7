@@ -206,7 +206,7 @@ export default function SideAndNav() {
               <div className="flex flex-col">
                 <div className="grid grid-cols-2 gap-6 mx-8">
                   {schedules.map((schedule, index) => (
-                    <div key={schedule.id} className="border-neutral-300 bg-white rounded-md p-4">
+                    <div key={schedule.id} className="border border-neutral-300 bg-white rounded-md p-4">
                       <div className="flex flex-row gap-4 justify-between items-center mb-5">
                         <p className="font-roboto-700 text-gray-800 text-lg">{schedule.plant_name}</p>
                         <div>
