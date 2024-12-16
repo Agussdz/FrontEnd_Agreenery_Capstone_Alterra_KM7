@@ -1,8 +1,15 @@
 import { Sidebar } from "flowbite-react";
 import logosidebar from "../assets/logo-white.png";
 import { Link } from "react-router-dom";
+import useLoginStore from "../stores/useLoginStore";
 
 export function AdminSidebarComponent({ isSidebarOpen }) {
+  const logout = useLoginStore((state) => state.logout);
+
+  const handleSignOut = () => {
+    logout();
+    window.location.href = "/login";
+  };
   return (
     <div className="flex h-screen">
       <div
@@ -52,7 +59,7 @@ export function AdminSidebarComponent({ isSidebarOpen }) {
               </Sidebar.Item>
 
               {/* Notifikasi */}
-              <Sidebar.Item className=" font-roboto-600 text-sm text-neutral-600 hover:bg-primary-600 cursor-pointer">
+              <Sidebar.Item className=" font-roboto-600 text-sm  hover:bg-primary-600 cursor-pointer">
                 <svg
                   width="24"
                   height="24"
@@ -156,7 +163,11 @@ export function AdminSidebarComponent({ isSidebarOpen }) {
                 </span>
               </Sidebar.Item>
               {/* Komunitas Petani */}
-              <Sidebar.Item className=" font-roboto-600 text-sm text-neutral-600 hover:bg-primary-600 cursor-pointer">
+              <Sidebar.Item
+                as={Link}
+                to="/admin-komunitas"
+                className=" font-roboto-600 text-sm text-neutral-600 hover:bg-primary-600 cursor-pointer"
+              >
                 <svg
                   width="24"
                   height="24"
@@ -187,6 +198,38 @@ export function AdminSidebarComponent({ isSidebarOpen }) {
                 </svg>
                 <span className=" align-bottom pl-4 text-neutral-100">
                   Komunitas Petani
+                </span>
+              </Sidebar.Item>
+
+              {/* Logout */}
+              <Sidebar.Item
+                className=" font-roboto-600 text-sm text-neutral-600 hover:bg-primary-600 cursor-pointer lg:mt-14"
+                onClick={handleSignOut}
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="inline-block mr-2"
+                >
+                  <defs>
+                    <clipPath id="clip0_548_1227">
+                      <rect width="24" height="24" fill="white" />
+                    </clipPath>
+                  </defs>
+                  <path
+                    d="M21.3376 0.675049C20.8876 0.675049 20.5126 1.05005 20.5126 1.50005V22.5001C20.5126 22.9501 20.8876 23.3251 21.3376 23.3251C21.7876 23.3251 22.1626 22.9501 22.1626 22.5001V1.50005C22.2001 1.05005 21.8251 0.675049 21.3376 0.675049Z"
+                    fill="#FBFBFB"
+                  />
+                  <path
+                    d="M12.4875 8.24995C12.15 7.91245 11.625 7.91245 11.2875 8.24995C10.95 8.58745 10.95 9.11245 11.2875 9.44995L13.875 12.075H2.62505C2.17505 12.075 1.80005 12.45 1.80005 12.9C1.80005 13.35 2.17505 13.725 2.62505 13.725H13.875L11.325 16.35C10.9875 16.6875 10.9875 17.2125 11.325 17.55C11.475 17.7 11.7 17.775 11.925 17.775C12.15 17.775 12.375 17.7 12.525 17.5125L16.5 13.5C16.8375 13.1625 16.8375 12.6375 16.5 12.3L12.4875 8.24995Z"
+                    fill="#FBFBFB"
+                  />
+                </svg>
+                <span className=" align-bottom pl-4 text-neutral-100">
+                  Logout
                 </span>
               </Sidebar.Item>
             </Sidebar.ItemGroup>
