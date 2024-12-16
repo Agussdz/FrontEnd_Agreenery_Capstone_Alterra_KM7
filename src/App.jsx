@@ -15,11 +15,11 @@ import ArticlePage from "./pages/ArticlePage";
 import ArticleDetailsPage from "./pages/ArticleDetailsPage";
 import FarmCommunityPage from "./pages/FarmCommunityPage";
 import AdminArticlePage from "./pages/AdminArticlePage";
+import AdminCommunityPage from "./pages/AdminCommunityPage";
 
 function App() {
   return (
     <Router>
-      {/* <h1 className="text-primary-600 text-5xl font-roboto-700">Tes</h1> */}
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<Home />} />
@@ -53,6 +53,7 @@ function App() {
         <Route element={<AdminProtectedRoutes />}>
           <Route path="/dashboard" element={<AdminArticlePage />} />
           <Route path="/admin-article" element={<AdminArticlePage />} />
+          <Route path="/admin-komunitas" element={<AdminCommunityPage />} />
         </Route>
       </Routes>
     </Router>
