@@ -4,7 +4,6 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import WateringSchedulePage from "./pages/WateringSchedulePage";
 import WateringScheduleFormPage from "./pages/WateringScheduleFormPage";
-import SideAndNav from "./pages/SideAndNav";
 import PerawatanTanaman from "./pages/PerawatanTanaman";
 import UserProtectedRoutes from "./routes/UserProtectedRoutes";
 import AdminProtectedRoutes from "./routes/AdminProtectedRoutes";
@@ -28,7 +27,6 @@ import AdminCommunityPage from "./pages/AdminCommunityPage";
 import AdminCommunityActionsPage from "./pages/AdminCommunityActionsPage";
 import AdminKategoriPage from "./pages/AdminKategoriPage";
 
-
 function App() {
   return (
     <Router>
@@ -40,16 +38,15 @@ function App() {
         <Route path="/sidenav" element={<SideAndNav />} />
         <Route path="/perawatan" element={<PerawatanTanaman />} />
 
-
         {/* User Private Route */}
         <Route element={<UserProtectedRoutes />}>
           <Route path="/homepage" element={<SideAndNav />} />
-             <Route path="/cuaca" element={<HeroCuaca />} />
-            <Route path="/formcuaca" element={<FormCuaca />} />
-            <Route path="/weather-details" element={<WeatherDetails />} />
-            <Route path="/todayweather" element={<TodayWeatherPage />} />
-            <Route path="/currentweather" element={<CurentWeatherPage />} />
-            <Route path="/dailyweather" element={<DailyWeatherPage />} />
+          <Route path="/cuaca" element={<HeroCuaca />} />
+          <Route path="/formcuaca" element={<FormCuaca />} />
+          <Route path="/weather-details" element={<WeatherDetails />} />
+          <Route path="/todayweather" element={<TodayWeatherPage />} />
+          <Route path="/currentweather" element={<CurentWeatherPage />} />
+          <Route path="/dailyweather" element={<DailyWeatherPage />} />
           <Route path="/chatbot" element={<ChatbotPage />} />
           <Route path="/jadwal-penyiraman" element={<WateringSchedulePage />} />
           <Route
@@ -77,11 +74,10 @@ function App() {
             path="/admin-komunitas/actions/:postId"
             element={<AdminCommunityActionsPage />}
           />
-
+          <Route path="/admin-kategori" element={<AdminKategoriPage />} />
         </Route>
       </Routes>
     </Router>
-
   );
 }
 
