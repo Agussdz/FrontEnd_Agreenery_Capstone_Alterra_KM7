@@ -17,6 +17,7 @@ import FarmCommunityPage from "./pages/FarmCommunityPage";
 import AdminArticlePage from "./pages/AdminArticlePage";
 import AdminCommunityPage from "./pages/AdminCommunityPage";
 import AdminCommunityActionsPage from "./pages/AdminCommunityActionsPage";
+import AdminKategoriPage from "./pages/AdminKategoriPage";
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
             path="/admin-komunitas/actions/:postId"
             element={<AdminCommunityActionsPage />}
           />
+
         </Route>
       </Routes>
     </Router>
