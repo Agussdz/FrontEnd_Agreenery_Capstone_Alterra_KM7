@@ -1,7 +1,13 @@
 import { Sidebar } from "flowbite-react";
 import logosidebar from "../assets/logo-green.png";
-
+import { useNavigate } from "react-router-dom";
 export function SidebarComponent({ isSidebarOpen }) {
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/");
+  };
   return (
     <div className="flex h-screen">
       <div
@@ -21,8 +27,8 @@ export function SidebarComponent({ isSidebarOpen }) {
 
               {/* Home */}
               <Sidebar.Item
-                className=" font-roboto-600 text-sm text-neutral-600"
-                href="#"
+                className=" font-roboto-600 text-sm text-neutral-600 cursor-pointer"
+                onClick={handleClick}
               >
                 <svg
                   width="24"
@@ -45,6 +51,7 @@ export function SidebarComponent({ isSidebarOpen }) {
                   </defs>
                 </svg>
                 <span className=" align-bottom pl-4">Home</span>
+                
               </Sidebar.Item>
               {/* Cuaca */}
               <Sidebar.Item

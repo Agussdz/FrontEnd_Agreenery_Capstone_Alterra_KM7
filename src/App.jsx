@@ -8,6 +8,8 @@ import UserProtectedRoutes from "./routes/UserProtectedRoutes";
 import AdminProtectedRoutes from "./routes/AdminProtectedRoutes";
 import AlertPassword from "./components/AlertPassword";
 import LoadingAnimation from "./components/LoadingAnimation";
+import CarePage from "./pages/CarePage";
+import DetailEnrollment from "./pages/DetailEnrollment";
 
 function App() {
   return (
@@ -20,6 +22,9 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/sidenav" element={<SideAndNav />} /> 
         <Route path="/perawatan" element={<PerawatanTanaman />} /> 
+        <Route path="/care/:id" element={<CarePage />} />
+        <Route path="/perawatan-tanaman/:enrollmentId" element={<DetailEnrollment />} />
+        
 
         {/* User Private Route */}
         <Route element={<UserProtectedRoutes />}>
