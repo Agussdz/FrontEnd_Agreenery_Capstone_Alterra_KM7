@@ -36,7 +36,7 @@ function App() {
 
           {/* Admin Private Route */}
           <Route element={<AdminProtectedRoutes />}>
-            <Route path="/dashboard" element={<LoadingAnimation />} />
+            <Route path="/dashboard" element={<AdminArticlePage />} />
           </Route>
         </Routes>
       </Router>

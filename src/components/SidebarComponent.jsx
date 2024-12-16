@@ -1,5 +1,6 @@
 import { Sidebar } from "flowbite-react";
 import logosidebar from "../assets/logo-green.png";
+import { Link } from "react-router-dom";
 
 export function SidebarComponent({ isSidebarOpen }) {
   return (
@@ -7,7 +8,7 @@ export function SidebarComponent({ isSidebarOpen }) {
       <div
         className={`fixed z-50 inset-y-0 left-0 bg-white shadow-lg border-r transition-transform transform ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } lg:translate-x-0 lg:static w-64`}
+        } lg:translate-x-0 lg:fixed w-64`}
       >
         <Sidebar
           aria-label="Sidebar with multi-level dropdown example"
@@ -15,14 +16,15 @@ export function SidebarComponent({ isSidebarOpen }) {
         >
           <Sidebar.Items>
             <Sidebar.ItemGroup>
-              <Sidebar.Item href="#">
-                <img src={logosidebar} alt="Logo" />
+              <Sidebar.Item>
+                <img className="my-6" src={logosidebar} alt="Logo" />
               </Sidebar.Item>
 
               {/* Home */}
               <Sidebar.Item
+                as={Link}
+                to="/homepage"
                 className=" font-roboto-600 text-sm text-neutral-600"
-                href="#"
               >
                 <svg
                   width="24"
@@ -46,10 +48,12 @@ export function SidebarComponent({ isSidebarOpen }) {
                 </svg>
                 <span className=" align-bottom pl-4">Home</span>
               </Sidebar.Item>
+
               {/* Cuaca */}
               <Sidebar.Item
+                as={Link}
+                to="/cuaca"
                 className=" font-roboto-600 text-sm text-neutral-600"
-                href="#"
               >
                 <svg
                   width="24"
@@ -96,8 +100,9 @@ export function SidebarComponent({ isSidebarOpen }) {
 
               {/* Jadwal Penyiraman */}
               <Sidebar.Item
+                as={Link}
+                to="/jadwal-penyiraman"
                 className=" font-roboto-600 text-sm text-neutral-600"
-                href="#"
               >
                 <svg
                   width="24"
@@ -136,8 +141,9 @@ export function SidebarComponent({ isSidebarOpen }) {
 
               {/* Perawatan Tanaman */}
               <Sidebar.Item
+                as={Link}
+                to="/perawatan-tanaman"
                 className=" font-roboto-600 text-sm text-neutral-600"
-                href="#"
               >
                 <svg
                   width="24"
@@ -168,8 +174,9 @@ export function SidebarComponent({ isSidebarOpen }) {
 
               {/* Artikel Pertanian */}
               <Sidebar.Item
+                as={Link}
+                to="/artikel-pertanian"
                 className=" font-roboto-600 text-sm text-neutral-600"
-                href="#"
               >
                 <svg
                   width="24"
@@ -205,10 +212,12 @@ export function SidebarComponent({ isSidebarOpen }) {
                 </svg>
                 <span className=" align-bottom pl-4">Artikel Pertanian</span>
               </Sidebar.Item>
+
               {/* Komunitas Petani */}
               <Sidebar.Item
+                as={Link}
+                to="/komunitas-petani"
                 className=" font-roboto-600 text-sm text-neutral-600"
-                href="#"
               >
                 <svg
                   width="24"
