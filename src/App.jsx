@@ -17,6 +17,7 @@ import FarmCommunityPage from "./pages/FarmCommunityPage";
 import AdminArticlePage from "./pages/AdminArticlePage";
 import AdminCommunityPage from "./pages/AdminCommunityPage";
 import AdminCommunityActionsPage from "./pages/AdminCommunityActionsPage";
+import AdminLangkahPage from "./pages/AdminLangkahPage";
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
           <Route path="/dashboard" element={<AdminArticlePage />} />
           <Route path="/admin-article" element={<AdminArticlePage />} />
           <Route path="/admin-komunitas" element={<AdminCommunityPage />} />
+          <Route path="/admin-langkah" element={<AdminLangkahPage/>} />
           <Route
             path="/admin-komunitas/actions/:postId"
             element={<AdminCommunityActionsPage />}
