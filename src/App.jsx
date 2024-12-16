@@ -9,6 +9,15 @@ import PerawatanTanaman from "./pages/PerawatanTanaman";
 import UserProtectedRoutes from "./routes/UserProtectedRoutes";
 import AdminProtectedRoutes from "./routes/AdminProtectedRoutes";
 import AlertPassword from "./components/AlertPassword";
+
+import SideAndNav from "./pages/SideAndNav";
+import HeroCuaca from "./pages/HeroCuaca";
+import FormCuaca from "./pages/FormCuaca";
+import WeatherDetails from "./pages/WeatherDetails";
+import TodayWeatherPage from "./pages/TodayWeatherPage";
+import CurentWeatherPage from "./pages/CurrentWeatherPage";
+import DailyWeatherPage from "./pages/DailyWeatherPage";
+
 import LoadingAnimation from "./components/LoadingAnimation";
 import ChatbotPage from "./pages/ChatbotPage";
 import ArticlePage from "./pages/ArticlePage";
@@ -18,6 +27,7 @@ import AdminArticlePage from "./pages/AdminArticlePage";
 import AdminCommunityPage from "./pages/AdminCommunityPage";
 import AdminCommunityActionsPage from "./pages/AdminCommunityActionsPage";
 import AdminKategoriPage from "./pages/AdminKategoriPage";
+
 
 function App() {
   return (
@@ -30,9 +40,16 @@ function App() {
         <Route path="/sidenav" element={<SideAndNav />} />
         <Route path="/perawatan" element={<PerawatanTanaman />} />
 
+
         {/* User Private Route */}
         <Route element={<UserProtectedRoutes />}>
           <Route path="/homepage" element={<SideAndNav />} />
+             <Route path="/cuaca" element={<HeroCuaca />} />
+            <Route path="/formcuaca" element={<FormCuaca />} />
+            <Route path="/weather-details" element={<WeatherDetails />} />
+            <Route path="/todayweather" element={<TodayWeatherPage />} />
+            <Route path="/currentweather" element={<CurentWeatherPage />} />
+            <Route path="/dailyweather" element={<DailyWeatherPage />} />
           <Route path="/chatbot" element={<ChatbotPage />} />
           <Route path="/jadwal-penyiraman" element={<WateringSchedulePage />} />
           <Route
@@ -64,6 +81,7 @@ function App() {
         </Route>
       </Routes>
     </Router>
+
   );
 }
 
