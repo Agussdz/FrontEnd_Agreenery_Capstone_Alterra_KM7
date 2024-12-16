@@ -1,5 +1,5 @@
 import { Search, PenLine, Trash2, Plus } from "lucide-react";
-import UploadArticle from "./UploadArticle";
+import AdminUploadArticle from "./AdminUploadArticle";
 import { Spinner } from "flowbite-react";
 import useAdminArticle from "../hooks/useAdminArticle";
 
@@ -149,7 +149,7 @@ export default function AdminArticle() {
             >
               Close
             </button>
-            <UploadArticle article={selectedArticle} closeModal={closeModal} />
+            <AdminUploadArticle article={selectedArticle} closeModal={closeModal} />
           </div>
         </div>
       )}
