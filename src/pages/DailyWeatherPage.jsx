@@ -10,25 +10,39 @@ export default function DailyWeatherPage() {
       {loading && <p>Memuat data cuaca...</p>}
       {error && <p className="text-red-500">{error}</p>}
       {!loading && !error && weatherData.length > 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="flex flex-col space-y-4">
           {weatherData.map((weather, index) => (
             <div
               key={index}
-              className="p-4 border rounded shadow-md bg-white flex flex-col items-center"
+              className="flex items-center justify-between border-t border-gray-300 py-4"
             >
-              <img
-                src={weather.icon}
-                alt={weather.main}
-                className="w-16 h-16 mb-2"
-              />
-              <h2 className="text-xl font-bold">{weather.main}</h2>
-              <p className="text-gray-600">{weather.description}</p>
-              <p>Suhu: {weather.temp}°C</p>
-              <p>Kelembapan: {weather.humidity}%</p>
-              <p>Kecepatan Angin: {weather.wind_speed} m/s</p>
-              <p className="text-sm text-gray-500">
-                Tanggal: {new Date(weather.date_time).toLocaleDateString()}
-              </p>
+              {/* Ikon Cuaca */}
+              <div className="flex-shrink-0 w-16 h-16">
+                <img
+                  src={weather.icon}
+                  alt={weather.main}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+
+              {/* Informasi Tengah */}
+              <div className="flex-1 text-center">
+                <h2 className="text-lg font-bold">{weather.main}</h2>
+                <p className="text-gray-500">{weather.description}</p>
+                <p className="text-sm text-gray-400">
+                  {new Date(weather.date_time).toLocaleDateString()}
+                </p>
+              </div>
+
+              {/* Suhu Rendah dan Tinggi */}
+              <div className="text-right">
+                <p className="bg-gray-200 px-2 py-1 rounded mb-1">
+                  Low: {weather.temp_min}°C
+                </p>
+                <p className="bg-gray-200 px-2 py-1 rounded">
+                  High: {weather.temp_max}°C
+                </p>
+              </div>
             </div>
           ))}
         </div>

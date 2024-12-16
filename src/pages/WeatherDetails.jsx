@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import useWeather from "../hooks/useWeather";
+import DailyWeatherPage from "./DailyWeatherPage";
 
 export default function WeatherDetails() {
   const location = useLocation();
@@ -38,22 +39,27 @@ export default function WeatherDetails() {
   } = weather;
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Detail Cuaca</h1>
-      <div className="flex items-center">
-        <img src={icon} alt={main} className="w-20 h-20 mr-4" />
-        <div>
-          <p className="text-lg font-bold">{main}</p>
+    <>
+    <div className="p-6 max-w-screen-lg mx-auto">
+      <h1 className="text-2xl font-bold mb-6 text-center">Detail Cuaca</h1>
+      <div className="flex flex-col md:flex-row items-center justify-between mb-6">
+        <div className="flex-shrink-0 mb-4 md:mb-0">
+          <img src={icon} alt={main} className="w-24 h-24" />
+        </div>
+        <div className="text-center md:text-left">
+          <p className="text-xl font-bold">{main}</p>
           <p>{description}</p>
         </div>
       </div>
-      <div className="mt-4">
-        <p>Suhu: {temp}°C</p>
-        <p>Suhu Minimal: {temp_min}°C</p>
-        <p>Suhu Maksimal: {temp_max}°C</p>
-        <p>Kelembaban: {humidity}%</p>
-        <p>Kecepatan Angin: {wind_speed} m/s</p>
+      <div className="space-y-4">
+        <p className="text-lg">Suhu: {temp}°C</p>
+        <p className="text-lg">Suhu Minimal: {temp_min}°C</p>
+        <p className="text-lg">Suhu Maksimal: {temp_max}°C</p>
+        <p className="text-lg">Kelembaban: {humidity}%</p>
+        <p className="text-lg">Kecepatan Angin: {wind_speed} m/s</p>
       </div>
     </div>
+    <DailyWeatherPage/>
+    </>
   );
 }
