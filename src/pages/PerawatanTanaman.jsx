@@ -30,9 +30,9 @@ export default function SideAndNav() {
           <div className="relative lg:pl-64">
             {/* Navbar Component */}
             <NavbarComponent />
-            {/*Konten Fitur bisa dimulai di sini */}
-            Ini contoh pemakaian sidebar sama navbar: Konten tiap page fitur
-            bisa mulai slicing di tag ini
+            <div className="border-l border-l-primary-100 mx-10 py-10">
+              <h1 className="text-xl font-semibold">Perawatan</h1>
+            </div>
           </div>
         </main>
       </div>

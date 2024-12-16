@@ -1,16 +1,18 @@
 import { useState } from "react";
-import { SidebarComponent } from "../components/SidebarComponent"; // Tambahin komponen ini di setiap page
-import { NavbarComponent } from "../components/NavbarComponent"; //Tambahin komponen ini di setiap page
+import { AdminSidebarComponent } from "../components/AdminSidebarComponent";
+import { NavbarAdmin } from "../components/NavbarAdmin";
 import { HiOutlineArrowLeft, HiOutlineMenu } from "react-icons/hi"; // Ikon hamburger dan Arrow tambahin di setiap page
+import SearchbarAdminComponent from "../components/SearchbarAdminComponent";
+import TabelKategoriAdmin from "../components/TabelKategoriAdmin";
 
-export default function SideAndNav() {
+export default function AdminKategoriPage() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <>
       <div className="flex h-screen">
         {/* Sidebar Component */}
-        <SidebarComponent isSidebarOpen={isSidebarOpen} />
+        <AdminSidebarComponent isSidebarOpen={isSidebarOpen} />
 
         {/*Content */}
         <main className="flex-grow bg-gray-100">
@@ -29,10 +31,20 @@ export default function SideAndNav() {
           {/* Content */}
           <div className="relative lg:pl-64">
             {/* Navbar Component */}
-            <NavbarComponent />
+            <NavbarAdmin />
             {/*Konten Fitur bisa dimulai di sini */}
-            Ini contoh pemakaian sidebar sama navbar: Konten tiap page fitur
-            bisa mulai slicing di tag ini
+
+            {/* Kelola Kategori */}
+            <div className=" pl-[40px] pt-[23px] text-primary-500 font-roboto-500 text-[24px]">
+              Kelola Kategori
+            </div>
+            
+            {/* Searchbar */}
+            <SearchbarAdminComponent/>
+            {/* Tabel Kategori */}
+            <TabelKategoriAdmin/>
+
+
           </div>
         </main>
       </div>

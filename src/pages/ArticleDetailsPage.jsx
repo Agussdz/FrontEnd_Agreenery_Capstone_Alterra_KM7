@@ -2,8 +2,9 @@ import { useState } from "react";
 import { SidebarComponent } from "../components/SidebarComponent"; // Tambahin komponen ini di setiap page
 import { NavbarComponent } from "../components/NavbarComponent"; //Tambahin komponen ini di setiap page
 import { HiOutlineArrowLeft, HiOutlineMenu } from "react-icons/hi"; // Ikon hamburger dan Arrow tambahin di setiap page
+import ArticleDetails from "../components/ArticleDetails";
 
-export default function SideAndNav() {
+export default function ArticleDetailsPage() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -31,8 +32,7 @@ export default function SideAndNav() {
             {/* Navbar Component */}
             <NavbarComponent />
             {/*Konten Fitur bisa dimulai di sini */}
-            Ini contoh pemakaian sidebar sama navbar: Konten tiap page fitur
-            bisa mulai slicing di tag ini
+            <ArticleDetails />
           </div>
         </main>
       </div>

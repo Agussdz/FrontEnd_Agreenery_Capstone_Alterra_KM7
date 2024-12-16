@@ -1,19 +1,20 @@
 import { useState } from "react";
-import { SidebarComponent } from "../components/SidebarComponent"; // Tambahin komponen ini di setiap page
 import { NavbarComponent } from "../components/NavbarComponent"; //Tambahin komponen ini di setiap page
 import { HiOutlineArrowLeft, HiOutlineMenu } from "react-icons/hi"; // Ikon hamburger dan Arrow tambahin di setiap page
+import { AdminSidebarComponent } from "../components/AdminSidebarComponent";
+import AdminCommunity from "../components/AdminCommunity";
 
-export default function SideAndNav() {
+export default function AdminCommunityPage() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <>
       <div className="flex h-screen">
         {/* Sidebar Component */}
-        <SidebarComponent isSidebarOpen={isSidebarOpen} />
+        <AdminSidebarComponent isSidebarOpen={isSidebarOpen} />
 
         {/*Content */}
-        <main className="flex-grow bg-gray-100">
+        <main className="flex-grow bg-gray-50">
           {/* Hamburger Icon */}
           <div
             className="lg:hidden fixed top-2 left-2 bg-transparent text-primary-400 p-2 rounded-md z-50 cursor-pointer"
@@ -31,8 +32,7 @@ export default function SideAndNav() {
             {/* Navbar Component */}
             <NavbarComponent />
             {/*Konten Fitur bisa dimulai di sini */}
-            Ini contoh pemakaian sidebar sama navbar: Konten tiap page fitur
-            bisa mulai slicing di tag ini
+            <AdminCommunity />
           </div>
         </main>
       </div>
