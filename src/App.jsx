@@ -14,6 +14,7 @@ import ChatbotPage from "./pages/ChatbotPage";
 import ArticlePage from "./pages/ArticlePage";
 import ArticleDetailsPage from "./pages/ArticleDetailsPage";
 import FarmCommunityPage from "./pages/FarmCommunityPage";
+import AdminArticlePage from "./pages/AdminArticlePage";
 
 function App() {
   return (
@@ -50,7 +51,8 @@ function App() {
 
         {/* Admin Private Route */}
         <Route element={<AdminProtectedRoutes />}>
-          <Route path="/dashboard" element={<LoadingAnimation />} />
+          <Route path="/dashboard" element={<AdminArticlePage />} />
+          <Route path="/admin-article" element={<AdminArticlePage />} />
         </Route>
       </Routes>
     </Router>
