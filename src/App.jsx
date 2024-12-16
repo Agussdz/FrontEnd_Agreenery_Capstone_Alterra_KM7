@@ -17,12 +17,11 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/sidenav" element={<SideAndNav />} />
-          <Route path="/home" element={<HomePage />} />
 
 
           {/* User Private Route */}
           <Route element={<UserProtectedRoutes />}>
-            <Route path="/homepage" element={<AlertPassword />} />
+            <Route path="/homepage" element={<HomePage />} />
           </Route>
 
           {/* Admin Private Route */}
