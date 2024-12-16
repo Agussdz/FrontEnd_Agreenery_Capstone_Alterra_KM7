@@ -13,6 +13,7 @@ import LoadingAnimation from "./components/LoadingAnimation";
 import ChatbotPage from "./pages/ChatbotPage";
 import ArticlePage from "./pages/ArticlePage";
 import ArticleDetailsPage from "./pages/ArticleDetailsPage";
+import FarmCommunityPage from "./pages/FarmCommunityPage";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
             element={<ArticleDetailsPage />}
           />
         </Route>
+        <Route path="/komunitas-petani" element={<FarmCommunityPage />} />
 
         {/* Admin Private Route */}
         <Route element={<AdminProtectedRoutes />}>

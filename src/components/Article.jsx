@@ -6,7 +6,7 @@ export default function Article() {
   const { posts, activeTab, setActiveTab, loading, tabs, timeAgo } =
     useArticle();
   return (
-    <div className="max-h-screen bg-gray-50 lg:px-20 py-6 p-5 ">
+    <div className="max-h-screen bg-gray-50 lg:px-14 py-6 p-5 ">
       <div className="border-l-4 mb-8 border-primary-100 px-4 py-2 flex flex-row gap-4 justify-between items-center">
         <div>
           <h1 className="text-xl font-roboto-700 text-primary-400">
