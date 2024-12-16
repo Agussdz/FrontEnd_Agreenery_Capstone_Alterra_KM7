@@ -41,7 +41,6 @@ export default function AdminKategoriPage() {
             
             {/* Searchbar */}
             <SearchbarAdminComponent/>
-
             {/* Tabel Kategori */}
             <TabelKategoriAdmin/>
 

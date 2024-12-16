@@ -1,102 +1,275 @@
-import { Table } from "flowbite-react";
+import { Table, Modal, Button } from "flowbite-react";
+import { useState } from "react";
+import useCategory from "../hooks/useCategory";
 
-export default function TabelKategoriAdmin() {
+export default function TabelKategoriAdmin2() {
+  // State untuk modal
+  const [isOpen, setIsOpen] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editId, setEditId] = useState(null);
+
+  // State untuk form input
+  const [formData, setFormData] = useState({
+    nama: "",
+    jenis: "",
+  });
+
+  // Hooks untuk kategori
+  const {
+    categories,
+    isLoading,
+    error,
+    addCategory,
+    editCategory,
+    deleteCategory,
+  } = useCategory();
+
+  // Function untuk membuka modal (untuk tambah atau edit)
+  const handleOpen = (category = null) => {
+    if (category) {
+      setIsEditing(true);
+      setEditId(category.id);
+      setFormData({ nama: category.name, jenis: category.type });
+    } else {
+      setIsEditing(false);
+      setFormData({ nama: "", jenis: "" });
+    }
+    setIsOpen(true);
+  };
+
+  // Function untuk menutup modal
+  const handleClose = () => {
+    setIsOpen(false);
+    setFormData({ nama: "", jenis: "" }); // Reset form saat modal ditutup
+  };
+
+  // Function untuk handle perubahan input form
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // Function untuk handle submit form
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (formData.nama && formData.jenis) {
+      if (isEditing) {
+        await editCategory(editId, {
+          name: formData.nama,
+          type: formData.jenis,
+        });
+      } else {
+        await addCategory({ name: formData.nama, type: formData.jenis });
+      }
+      handleClose();
+    } else {
+      Swal.fire({
+        icon: "warning",
+        title: "Form Tidak Lengkap",
+        text: "Mohon isi semua kolom sebelum menyimpan.",
+      });
+    }
+  };
+
+  // Function untuk menghapus kategori
+  const handleDelete = async (id) => {
+    const confirm = await Swal.fire({
+      title: "Apakah Anda Yakin?",
+      text: "Kategori yang dihapus tidak dapat dikembalikan.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Ya, Hapus!",
+      cancelButtonText: "Batal",
+    });
+
+    if (confirm.isConfirmed) {
+      await deleteCategory(id);
+    }
+  };
+
   return (
     <div className="overflow-x-auto px-[40px] py-[24px]">
+      {/* Header */}
+      <div className="flex justify-between items-center pb-3">
+        <div className="kategori font-roboto-500 text-neutral-400 text-[28px]">
+          Kategori
+        </div>
+        <button
+          onClick={() => handleOpen()}
+          className="bg-primary-400 text-white px-4 py-2 hover:bg-green rounded-xl"
+        >
+          Tambah
+        </button>
+      </div>
+
+      {/* Tabel */}
       <Table hoverable>
         <Table.Head>
           <Table.HeadCell>Nama Kategori</Table.HeadCell>
           <Table.HeadCell>Jenis Kategori</Table.HeadCell>
           <Table.HeadCell>Aksi</Table.HeadCell>
-          <Table.HeadCell>
-            <span className="sr-only">Edit</span>
-          </Table.HeadCell>
         </Table.Head>
         <Table.Body>
-          <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-            <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-              {'Apple MacBook Pro 17"'}
-            </Table.Cell>
-            <Table.Cell>Silver</Table.Cell>
-            <Table.Cell>
-              <a
-                href="#"
-                className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
-              >
-                <svg
-                  width="32"
-                  height="24"
-                  viewBox="0 0 32 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect
-                    width="32"
-                    height="24"
-                    rx="5"
-                    fill="#F10C0C"
-                    fill-opacity="0.3"
-                  />
-                  <path
-                    d="M20.225 6.1998H18.3V5.7748C18.3 5.0248 17.7 4.4248 16.95 4.4248H15.025C14.275 4.4248 13.675 5.0248 13.675 5.7748V6.1998H11.75C11.025 6.1998 10.425 6.7998 10.425 7.5248V8.2748C10.425 8.8248 10.75 9.2748 11.225 9.4748L11.625 18.1248C11.675 18.9498 12.325 19.5748 13.15 19.5748H18.775C19.6 19.5748 20.275 18.9248 20.3 18.1248L20.75 9.4498C21.225 9.2498 21.55 8.7748 21.55 8.2498V7.4998C21.55 6.7998 20.95 6.1998 20.225 6.1998ZM14.825 5.7748C14.825 5.6498 14.925 5.5498 15.05 5.5498H16.975C17.1 5.5498 17.2 5.6498 17.2 5.7748V6.1998H14.85V5.7748H14.825ZM11.575 7.5248C11.575 7.4248 11.65 7.3248 11.775 7.3248H20.225C20.325 7.3248 20.425 7.3998 20.425 7.5248V8.2748C20.425 8.3748 20.35 8.4748 20.225 8.4748H11.775C11.675 8.4748 11.575 8.3998 11.575 8.2748V7.5248ZM18.8 18.4498H13.2C12.975 18.4498 12.8 18.2748 12.8 18.0748L12.4 9.5998H19.625L19.225 18.0748C19.2 18.2748 19.025 18.4498 18.8 18.4498Z"
-                    fill="#F10C0C"
-                  />
-                  <path
-                    d="M16 11.7749C15.7 11.7749 15.425 12.0249 15.425 12.3499V16.2249C15.425 16.5249 15.675 16.7999 16 16.7999C16.3 16.7999 16.575 16.5499 16.575 16.2249V12.3249C16.575 12.0249 16.3 11.7749 16 11.7749Z"
-                    fill="#F10C0C"
-                  />
-                  <path
-                    d="M18.325 12.2498C18.025 12.2248 17.75 12.4748 17.725 12.7748L17.575 15.6498C17.55 15.9498 17.8 16.2248 18.1 16.2498H18.125C18.425 16.2498 18.675 16.0248 18.675 15.7248L18.825 12.8498C18.875 12.5248 18.625 12.2748 18.325 12.2498Z"
-                    fill="#F10C0C"
-                  />
-                  <path
-                    d="M13.65 12.2498C13.35 12.2748 13.1 12.5248 13.125 12.8498L13.3 15.7498C13.325 16.0498 13.575 16.2748 13.85 16.2748H13.875C14.175 16.2498 14.425 15.9998 14.4 15.6748L14.25 12.7748C14.225 12.4748 13.95 12.2248 13.65 12.2498Z"
-                    fill="#F10C0C"
-                  />
-                </svg>
-              </a>
-            </Table.Cell>
-            <Table.Cell>
-              <a
-                href="#"
-                className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
-              >
-                <svg
-                  width="32"
-                  height="24"
-                  viewBox="0 0 32 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect
-                    width="32"
-                    height="24"
-                    rx="5"
-                    fill="#FFA906"
-                    fill-opacity="0.25"
-                  />
-                  <g clip-path="url(#clip0_825_2156)">
-                    <path
-                      d="M23.3 7.2502C22.5 6.4002 21.65 5.5502 20.8 4.7252C20.625 4.5502 20.425 4.4502 20.2 4.4502C19.975 4.4502 19.75 4.5252 19.6 4.7002L10.175 14.0502C10.025 14.2002 9.925 14.3752 9.85 14.5502L8.475 18.7502C8.4 18.9502 8.45 19.1502 8.55 19.3002C8.675 19.4502 8.85 19.5502 9.075 19.5502H9.175L13.45 18.1252C13.65 18.0502 13.825 17.9502 13.95 17.8002L23.325 8.4502C23.475 8.3002 23.575 8.0752 23.575 7.8502C23.575 7.6252 23.475 7.4252 23.3 7.2502ZM13.15 17.0252C13.125 17.0502 13.1 17.0502 13.075 17.0752L9.85 18.1502L10.925 14.9252C10.925 14.9002 10.95 14.8752 10.975 14.8502L17.85 8.0002L20.025 10.1752L13.15 17.0252ZM20.8 9.3752L18.625 7.2002L20.15 5.6752C20.875 6.3752 21.6 7.1252 22.3 7.8502L20.8 9.3752Z"
-                      fill="#FFA31A"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_825_2156">
+          {isLoading ? (
+            <Table.Row>
+              <Table.Cell colSpan="3" className="text-center">
+                Loading...
+              </Table.Cell>
+            </Table.Row>
+          ) : error ? (
+            <Table.Row>
+              <Table.Cell colSpan="3" className="text-center text-red-500">
+                {error}
+              </Table.Cell>
+            </Table.Row>
+          ) : (
+            categories.map((category) => (
+              <Table.Row key={category.id}>
+                <Table.Cell>{category.name}</Table.Cell>
+                <Table.Cell>{category.type}</Table.Cell>
+                <Table.Cell>
+                  <button
+                    className="text-blue-500"
+                    onClick={() => handleOpen(category)}
+                  >
+                    <svg
+                      width="32"
+                      height="25"
+                      viewBox="0 0 32 25"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <rect
-                        width="16"
-                        height="16"
-                        fill="white"
-                        transform="translate(8 4)"
+                        y="0.5"
+                        width="32"
+                        height="24"
+                        rx="5"
+                        fill="#3DAC21"
+                        fill-opacity="0.25"
                       />
-                    </clipPath>
-                  </defs>
-                </svg>
-              </a>
-            </Table.Cell>
-          </Table.Row>
+                      <g clip-path="url(#clip0_671_2555)">
+                        <path
+                          d="M23.3 7.74995C22.5 6.89995 21.65 6.04995 20.8 5.22495C20.625 5.04995 20.425 4.94995 20.2 4.94995C19.975 4.94995 19.75 5.02495 19.6 5.19995L10.175 14.55C10.025 14.7 9.92501 14.875 9.85001 15.05L8.47501 19.25C8.40001 19.45 8.45001 19.65 8.55001 19.8C8.67501 19.95 8.85001 20.05 9.07501 20.05H9.17501L13.45 18.625C13.65 18.55 13.825 18.45 13.95 18.3L23.325 8.94995C23.475 8.79995 23.575 8.57495 23.575 8.34995C23.575 8.12495 23.475 7.92495 23.3 7.74995ZM13.15 17.525C13.125 17.55 13.1 17.55 13.075 17.575L9.85001 18.65L10.925 15.425C10.925 15.4 10.95 15.375 10.975 15.35L17.85 8.49995L20.025 10.675L13.15 17.525ZM20.8 9.87495L18.625 7.69995L20.15 6.17495C20.875 6.87495 21.6 7.62495 22.3 8.34995L20.8 9.87495Z"
+                          fill="#266B15"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_671_2555">
+                          <rect
+                            width="16"
+                            height="16"
+                            fill="white"
+                            transform="translate(8 4.5)"
+                          />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </button>
+                  <button
+                    className="text-red-500 ml-2"
+                    onClick={() => handleDelete(category.id)}
+                  >
+                    <svg
+                      width="32"
+                      height="25"
+                      viewBox="0 0 32 25"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        y="0.5"
+                        width="32"
+                        height="24"
+                        rx="5"
+                        fill="#F10C0C"
+                        fill-opacity="0.3"
+                      />
+                      <g clip-path="url(#clip0_671_2553)">
+                        <path
+                          d="M20.225 6.70005H18.3V6.27505C18.3 5.52505 17.7 4.92505 16.95 4.92505H15.025C14.275 4.92505 13.675 5.52505 13.675 6.27505V6.70005H11.75C11.025 6.70005 10.425 7.30005 10.425 8.02505V8.77505C10.425 9.32505 10.75 9.77505 11.225 9.97505L11.625 18.625C11.675 19.45 12.325 20.075 13.15 20.075H18.775C19.6 20.075 20.275 19.425 20.3 18.625L20.75 9.95005C21.225 9.75005 21.55 9.27505 21.55 8.75005V8.00005C21.55 7.30005 20.95 6.70005 20.225 6.70005ZM14.825 6.27505C14.825 6.15005 14.925 6.05005 15.05 6.05005H16.975C17.1 6.05005 17.2 6.15005 17.2 6.27505V6.70005H14.85V6.27505H14.825ZM11.575 8.02505C11.575 7.92505 11.65 7.82505 11.775 7.82505H20.225C20.325 7.82505 20.425 7.90005 20.425 8.02505V8.77505C20.425 8.87505 20.35 8.97505 20.225 8.97505H11.775C11.675 8.97505 11.575 8.90005 11.575 8.77505V8.02505ZM18.8 18.95H13.2C12.975 18.95 12.8 18.775 12.8 18.575L12.4 10.1H19.625L19.225 18.575C19.2 18.775 19.025 18.95 18.8 18.95Z"
+                          fill="#F10C0C"
+                        />
+                        <path
+                          d="M16 12.275C15.7 12.275 15.425 12.525 15.425 12.85V16.725C15.425 17.025 15.675 17.3 16 17.3C16.3 17.3 16.575 17.05 16.575 16.725V12.825C16.575 12.525 16.3 12.275 16 12.275Z"
+                          fill="#F10C0C"
+                        />
+                        <path
+                          d="M18.325 12.75C18.025 12.725 17.75 12.975 17.725 13.275L17.575 16.15C17.55 16.45 17.8 16.725 18.1 16.75H18.125C18.425 16.75 18.675 16.525 18.675 16.225L18.825 13.35C18.875 13.025 18.625 12.775 18.325 12.75Z"
+                          fill="#F10C0C"
+                        />
+                        <path
+                          d="M13.65 12.75C13.35 12.775 13.1 13.025 13.125 13.35L13.3 16.25C13.325 16.55 13.575 16.775 13.85 16.775H13.875C14.175 16.75 14.425 16.5 14.4 16.175L14.25 13.275C14.225 12.975 13.95 12.725 13.65 12.75Z"
+                          fill="#F10C0C"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_671_2553">
+                          <rect
+                            width="16"
+                            height="16"
+                            fill="white"
+                            transform="translate(8 4.5)"
+                          />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </button>
+                </Table.Cell>
+              </Table.Row>
+            ))
+          )}
         </Table.Body>
       </Table>
+
+      {/* Modal Form */}
+      <Modal show={isOpen} size="md" popup onClose={handleClose}>
+        <Modal.Header />
+        <Modal.Body>
+          <form onSubmit={handleSubmit}>
+            <div className="space-y-6">
+              <div>
+                <label htmlFor="nama" className="block mb-2">
+                  Nama Kategori
+                </label>
+                <input
+                  type="text"
+                  id="nama"
+                  name="nama"
+                  value={formData.nama}
+                  onChange={handleChange}
+                  required
+                  className="w-full p-2 border rounded"
+                />
+              </div>
+              <div>
+                <label htmlFor="jenis" className="block mb-2">
+                  Jenis Kategori
+                </label>
+                <select
+                  id="jenis"
+                  name="jenis"
+                  value={formData.jenis}
+                  onChange={handleChange}
+                  required
+                  className="w-full p-2 border rounded"
+                >
+                  <option value="">Pilih jenis</option>
+                  <option value="article">Artikel</option>
+                  <option value="plant">Tanaman</option>
+                </select>
+              </div>
+              <div className="flex justify-end space-x-4">
+                <Button color="gray" onClick={handleClose}>
+                  Batal
+                </Button>
+                <Button type="submit" color="green">
+                  {isEditing ? "Simpan Perubahan" : "Tambah"}
+                </Button>
+              </div>
+            </div>
+          </form>
+        </Modal.Body>
+      </Modal>
     </div>
   );
 }
