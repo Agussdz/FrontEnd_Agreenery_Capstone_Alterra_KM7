@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AdminSidebarComponent } from "../components/AdminSidebarComponent";
-import { AdminNavbarComponent } from "../components/AdminNavbarComponent";
+import { NavbarAdmin } from "../components/NavbarAdmin";
 import { HiOutlineArrowLeft, HiOutlineMenu } from "react-icons/hi"; // Ikon hamburger dan Arrow tambahin di setiap page
 import SearchbarAdminComponent from "../components/SearchbarAdminComponent";
 import TabelKategoriAdmin from "../components/TabelKategoriAdmin";
@@ -31,7 +31,7 @@ export default function AdminKategoriPage() {
           {/* Content */}
           <div className="relative lg:pl-64">
             {/* Navbar Component */}
-            <AdminNavbarComponent />
+            <NavbarAdmin />
             {/*Konten Fitur bisa dimulai di sini */}
 
             {/* Kelola Kategori */}

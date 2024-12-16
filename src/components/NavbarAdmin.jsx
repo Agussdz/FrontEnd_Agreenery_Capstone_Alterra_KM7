@@ -2,7 +2,7 @@ import React from "react";
 import { Dropdown, Avatar } from "flowbite-react";
 import { Link } from "react-router-dom";
 
-export function AdminNavbarComponent() {
+export function NavbarAdmin() {
   return (
     <header className="antialiased">
       <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
