@@ -26,6 +26,8 @@ import AdminArticlePage from "./pages/AdminArticlePage";
 import AdminCommunityPage from "./pages/AdminCommunityPage";
 import AdminCommunityActionsPage from "./pages/AdminCommunityActionsPage";
 import AdminKategoriPage from "./pages/AdminKategoriPage";
+import UserNotificationPage from "./pages/UserNotificationPage";
+import AdminNotificationPage from "./pages/AdminNotificationPage";
 
 function App() {
   return (
@@ -62,6 +64,7 @@ function App() {
             path="/artikel-pertanian/:id"
             element={<ArticleDetailsPage />}
           />
+          <Route path="/user-notification" element={<UserNotificationPage />} />
         </Route>
         <Route path="/komunitas-petani" element={<FarmCommunityPage />} />
 
@@ -75,6 +78,10 @@ function App() {
             element={<AdminCommunityActionsPage />}
           />
           <Route path="/admin-kategori" element={<AdminKategoriPage />} />
+          <Route
+            path="/admin-notification"
+            element={<AdminNotificationPage />}
+          />
         </Route>
       </Routes>
     </Router>
