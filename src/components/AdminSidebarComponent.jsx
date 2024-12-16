@@ -28,7 +28,11 @@ export function AdminSidebarComponent({ isSidebarOpen }) {
               </Sidebar.Item>
 
               {/* Dashboard */}
-              <Sidebar.Item className=" font-roboto-600 text-sm hover:bg-primary-600 cursor-pointer">
+              <Sidebar.Item
+                as={Link}
+                to="/admin-kategori"
+                className=" font-roboto-600 text-sm hover:bg-primary-600 cursor-pointer"
+              >
                 <svg
                   width="24"
                   height="24"
@@ -59,7 +63,11 @@ export function AdminSidebarComponent({ isSidebarOpen }) {
               </Sidebar.Item>
 
               {/* Notifikasi */}
-              <Sidebar.Item className=" font-roboto-600 text-sm  hover:bg-primary-600 cursor-pointer">
+              <Sidebar.Item
+                as={Link}
+                to="/admin-notification"
+                className=" font-roboto-600 text-sm  hover:bg-primary-600 cursor-pointer"
+              >
                 <svg
                   width="24"
                   height="24"
