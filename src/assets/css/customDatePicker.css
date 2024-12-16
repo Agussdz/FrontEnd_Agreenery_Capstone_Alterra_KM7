@@ -1,0 +1,66 @@
+.customDatePickerWidth, 
+.customDatePickerWidth > div.react-datepicker-wrapper, 
+.customDatePickerWidth > div > div.react-datepicker__input-container
+.customDatePickerWidth > div > div.react-datepicker__input-container input {
+   width: 100%;
+}
+
+.react-datepicker__header {
+    background-color: white;
+    padding: 10px;
+    border: none;
+}
+
+.react-datepicker__day--selected {
+    background-color: #3DAC21 !important; /* Change this to your desired color */
+    color: white;
+    border-radius: 50% !important;
+}
+
+.react-datepicker__current-month {
+    color: #3DAC21;
+    border-radius: 100px;    
+}  
+
+.react-datepicker__navigation--previous {
+    border: 1px solid #3DAC21;
+    border-radius: 100px;
+    left: 14px;
+    top: 12px;
+}
+
+.react-datepicker__navigation--next {
+    border: 1px solid #3DAC21;
+    border-radius: 100px;
+    top: 12px;
+    right: 14px;
+}
+
+.react-datepicker__current-month {
+    padding: 10px !important;
+}
+  
+.react-datepicker__navigation-icon::before {
+    border-color: #3DAC21
+}
+  
+.react-datepicker__navigation-icon--previous::before {
+    right: -4px;
+    top: 8px;
+}
+
+.react-datepicker__navigation-icon--next::before {
+    top:8px;
+    left: -4px;
+}
+
+.react-datepicker__day--keyboard-selected {
+    background-color: #3DAC21;
+    color: #fff
+}
+
+.react-datepicker__day--keyboard-selected:not([aria-disabled=true]):hover {
+    background-color: #5bc441;
+    color: #fff
+}
+

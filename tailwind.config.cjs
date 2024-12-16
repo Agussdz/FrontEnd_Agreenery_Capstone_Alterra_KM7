@@ -1,14 +1,15 @@
+const flowbite = require("flowbite-react/tailwind");
 /** @type {import('tailwindcss').Config} */
 
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}", flowbite.content(),],
   theme: {
     fontFamily: {
       roboto: ["Roboto", "sans-serif"], // Menambahkan font family Roboto
     },
     fontWeight: {
       "roboto-300": "300",
-      "roboto-400": "400", // font wight roboto
+      "roboto-400": "400", // font weight roboto
       "roboto-500": "500",
       "roboto-700": "700",
     },
@@ -62,7 +63,7 @@ export default {
         300: "#E7E4E4",
         400: "#616161", // neutral
         500: "#414141",
-        600: "#414141",
+        600: "#241E1E",
       },
       success: {
         100: "#47E16A",
@@ -72,7 +73,11 @@ export default {
         500: "#1BA73B",
       },
     },
-    extend: {},
+    extend: {
+      scrollBehavior: ["smooth"], // Mengaktifkan scroll-behavior smooth
+    },
   },
-  plugins: [],
+  plugins: [
+    flowbite.plugin(),
+  ],
 };
