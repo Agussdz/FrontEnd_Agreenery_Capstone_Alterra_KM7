@@ -8,6 +8,9 @@ import PerawatanTanaman from "./pages/PerawatanTanaman";
 import UserProtectedRoutes from "./routes/UserProtectedRoutes";
 import AdminProtectedRoutes from "./routes/AdminProtectedRoutes";
 import AlertPassword from "./components/AlertPassword";
+import CarePage from "./pages/CarePage";
+import DetailEnrollment from "./pages/DetailEnrollment";
+
 
 import SideAndNav from "./pages/SideAndNav";
 import HeroCuaca from "./pages/HeroCuaca";
@@ -28,6 +31,9 @@ import AdminCommunityActionsPage from "./pages/AdminCommunityActionsPage";
 import AdminKategoriPage from "./pages/AdminKategoriPage";
 import UserNotificationPage from "./pages/UserNotificationPage";
 import AdminNotificationPage from "./pages/AdminNotificationPage";
+import HomePage from "./pages/HomePage";
+import AdminStepPlantsPage from "./pages/AdminStepPlantsPage";
+import AdminPerawatanPage from "./pages/AdminPerawatanPage";
 
 function App() {
   return (
@@ -38,11 +44,11 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/sidenav" element={<SideAndNav />} />
-        <Route path="/perawatan" element={<PerawatanTanaman />} />
+        
 
         {/* User Private Route */}
         <Route element={<UserProtectedRoutes />}>
-          <Route path="/homepage" element={<SideAndNav />} />
+          <Route path="/homepage" element={<HomePage />} />
           <Route path="/cuaca" element={<HeroCuaca />} />
           <Route path="/formcuaca" element={<FormCuaca />} />
           <Route path="/weather-details" element={<WeatherDetails />} />
@@ -51,6 +57,9 @@ function App() {
           <Route path="/dailyweather" element={<DailyWeatherPage />} />
           <Route path="/chatbot" element={<ChatbotPage />} />
           <Route path="/jadwal-penyiraman" element={<WateringSchedulePage />} />
+          <Route path="/care/:id" element={<CarePage />} />
+          <Route path="/perawatan-tanaman/:enrollmentId" element={<DetailEnrollment />} />
+          <Route path="/perawatan" element={<PerawatanTanaman />} />
           <Route
             path="/jadwal-penyiraman/add"
             element={<WateringScheduleFormPage />}
@@ -72,6 +81,7 @@ function App() {
         <Route element={<AdminProtectedRoutes />}>
           <Route path="/dashboard" element={<AdminArticlePage />} />
           <Route path="/admin-article" element={<AdminArticlePage />} />
+          <Route path="/admin-perawatan" element={<AdminPerawatanPage />} />
           <Route path="/admin-komunitas" element={<AdminCommunityPage />} />
           <Route
             path="/admin-komunitas/actions/:postId"
@@ -81,6 +91,10 @@ function App() {
           <Route
             path="/admin-notification"
             element={<AdminNotificationPage />}
+          />
+          <Route
+            path="/admin-step-plants/:plantId"
+            element={<AdminStepPlantsPage />}
           />
         </Route>
       </Routes>

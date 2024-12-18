@@ -58,7 +58,7 @@ export function AdminSidebarComponent({ isSidebarOpen }) {
                   </defs>
                 </svg>
                 <span className=" align-bottom pl-4 text-neutral-100">
-                  Dashboard
+                  Kategori
                 </span>
               </Sidebar.Item>
 
@@ -98,7 +98,11 @@ export function AdminSidebarComponent({ isSidebarOpen }) {
               </Sidebar.Item>
 
               {/* Perawatan Tanaman */}
-              <Sidebar.Item className=" font-roboto-600 text-sm text-neutral-600 hover:bg-primary-600 cursor-pointer">
+              <Sidebar.Item
+                as={Link}
+                to="/admin-perawatan"
+                className=" font-roboto-600 text-sm text-neutral-600 hover:bg-primary-600 cursor-pointer"
+              >
                 <svg
                   width="24"
                   height="24"
