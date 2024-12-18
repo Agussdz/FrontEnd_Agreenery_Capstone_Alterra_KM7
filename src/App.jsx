@@ -28,6 +28,7 @@ import AdminCommunityActionsPage from "./pages/AdminCommunityActionsPage";
 import AdminKategoriPage from "./pages/AdminKategoriPage";
 import UserNotificationPage from "./pages/UserNotificationPage";
 import AdminNotificationPage from "./pages/AdminNotificationPage";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
@@ -42,7 +43,7 @@ function App() {
 
         {/* User Private Route */}
         <Route element={<UserProtectedRoutes />}>
-          <Route path="/homepage" element={<SideAndNav />} />
+          <Route path="/homepage" element={<HomePage />} />
           <Route path="/cuaca" element={<HeroCuaca />} />
           <Route path="/formcuaca" element={<FormCuaca />} />
           <Route path="/weather-details" element={<WeatherDetails />} />
