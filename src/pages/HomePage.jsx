@@ -51,7 +51,7 @@ export default function HomePage() {
                   <div className="flex items-center gap-2 cursor-viewall relative">
                     <p
                       className=" text-neutral-400 text-[14px]"
-                      onClick={() => navigate("/perawatan-tanaman")}
+                      onClick={() => navigate("/perawatan")}
                       role="button"
                     >
                       View All
@@ -63,7 +63,7 @@ export default function HomePage() {
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                       role="button"
-                      onClick={() => navigate("/perawatan-tanaman")}
+                      onClick={() => navigate("/perawatan")}
                     >
                       <path
                         d="M19.6 8.40001L11.8375 0.525006C11.5 0.187506 10.975 0.187506 10.6375 0.525006C10.3 0.862506 10.3 1.38751 10.6375 1.72501L16.9375 8.13751H1.00005C0.550049 8.13751 0.175049 8.51251 0.175049 8.96251C0.175049 9.41251 0.550049 9.82501 1.00005 9.82501H17.0125L10.6375 16.3125C10.3 16.65 10.3 17.175 10.6375 17.5125C10.7875 17.6625 11.0125 17.7375 11.2375 17.7375C11.4625 17.7375 11.6875 17.6625 11.8375 17.475L19.6 9.60001C19.9375 9.26251 19.9375 8.73751 19.6 8.40001Z"
@@ -131,7 +131,7 @@ export default function HomePage() {
 
               <div
                 className=" pl-[24px] pt-[24px]"
-                onClick={() => navigate("/perawatan-tanaman")}
+                onClick={() => navigate("/perawatan")}
                 role="button"
               >
                 <CardAktivitasTanaman />
