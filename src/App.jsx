@@ -16,6 +16,7 @@ import WeatherDetails from "./pages/WeatherDetails";
 import TodayWeatherPage from "./pages/TodayWeatherPage";
 import CurentWeatherPage from "./pages/CurrentWeatherPage";
 import DailyWeatherPage from "./pages/DailyWeatherPage";
+import PerawatanTanamanPage from "./pages/PerawatanTanamanPage";
 
 import LoadingAnimation from "./components/LoadingAnimation";
 import ChatbotPage from "./pages/ChatbotPage";
@@ -52,6 +53,7 @@ function App() {
           <Route path="/dailyweather" element={<DailyWeatherPage />} />
           <Route path="/chatbot" element={<ChatbotPage />} />
           <Route path="/jadwal-penyiraman" element={<WateringSchedulePage />} />
+          <Route path="/perawatan-tanaman" element={<PerawatanTanamanPage />} />
           <Route
             path="/jadwal-penyiraman/add"
             element={<WateringScheduleFormPage />}
