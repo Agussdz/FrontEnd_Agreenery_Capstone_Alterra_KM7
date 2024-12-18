@@ -142,7 +142,7 @@ export function SidebarComponent({ isSidebarOpen }) {
               {/* Perawatan Tanaman */}
               <Sidebar.Item
                 as={Link}
-                to="/perawatan-tanaman"
+                to="/perawatan"
                 className=" font-roboto-600 text-sm text-neutral-600"
               >
                 <svg
