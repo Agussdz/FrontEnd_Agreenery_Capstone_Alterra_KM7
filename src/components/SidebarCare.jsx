@@ -1,57 +1,32 @@
 import { Sidebar } from "flowbite-react";
 import logosidebar from "../assets/logo-green.png";
+import youtube from "../assets/youtube.svg";
 
-export default function SidebarCare() {
-  const sidebarData = [
-    {
-      id: "1",
-      name: "Persiapan Awal Penanaman Tomat",
-      duration: "05:00 Menit",
-    },
-    {
-      id: "2",
-      name: "Perawatan Tanaman Tomat",
-      duration: "05:00 Menit",
-    },
-    {
-      id: "3",
-      name: "Pengendalian Hama dan Penyakit Tanaman Tomat",
-      duration: "05:00 Menit",
-    },
-    {
-      id: "4",
-      name: "Proses Panen Tanaman Tomat",
-      duration: "05:00 Menit",
-    },
-    {
-      id: "5",
-      name: "Tips-Tips Menanam Tanaman Tomat",
-      duration: "05:00 Menit",
-    },
-  ];
+export default function SidebarCare({step}) {
+
 
   return (
-    <div className="flex flex-col items-center w-full max-w-sm mx-auto">
+    <div className="flex flex-col items-center w-full max-w-sm mx-auto bg-neutral-100">
       {/* Logo */}
-      <img src={logosidebar} alt="Logo" className="w-80 p-1 -mb-10 -mt-10" />
+      <img src={logosidebar} alt="Logo" className="w-72 p-1 -mb-16 -mt-16" />
 
       {/* Sidebar Content */}
       <Sidebar aria-label="Sidebar example" className="w-full">
         <Sidebar.Items>
-          <Sidebar.ItemGroup>
-            {sidebarData.map((item) => (
+          <Sidebar.ItemGroup className="space-y-4">
+            {step?.map((item) => (
               <div
-                key={item.id}
-                className="flex items-center bg-gray-200 p-6 mb-2 rounded-xl shadow-sm"
+                key={item?.id}
+                className="flex items-center bg-neutral-300 p-2 rounded-3xl shadow-sm"
               >
                 {/* Icon YouTube */}
-                <div className="w-10 h-10 flex items-center justify-center bg-gray-400 rounded-md mr-4">
-                  <span className="text-white">▶</span>
+                <div className="w-10 h-10 flex items-center justify-center mr-4 mb-7">
+                  <img src={youtube} alt="Play Icon" className="w-6 h-6" />
                 </div>
                 {/* Text Content */}
                 <div>
-                  <p className="font-medium text-gray-800">{item.name}</p>
-                  <p className="text-sm text-gray-600">{item.duration}</p>
+                  <p className="font-medium text-gray-800">{item?.name}</p>
+                  {/* <p className="text-sm text-gray-600">{item?.duration}</p> */}
                 </div>
               </div>
             ))}

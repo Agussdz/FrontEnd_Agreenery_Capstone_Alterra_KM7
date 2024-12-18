@@ -84,7 +84,7 @@ const handleDetailClick = (id) => {
                 <div>
                     <div  className="flex flex-col gap-8 mr-8 mt-10 ml-5 mb-10">
                       <div className="border rounded-lg shadow-md bg-white flex gap-6 items-center h-full py-20 px-10">
-                        <img src={careSteps.image} alt="" className="" />
+                        <img src={careSteps.image} alt="" className="w-40 h-40" />
                         <div className="flex flex-col gap-4 mx-18">
                           <h2 className="font-roboto-700 text-xl text-gray-800"> {careSteps.name}</h2>
                           <span className="text-sm bg-yellow-400 text-white px-3 py-1 rounded-full self-start">{careSteps.category}</span>
