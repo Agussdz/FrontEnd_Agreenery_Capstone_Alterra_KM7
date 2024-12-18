@@ -5,8 +5,8 @@ export default function TodayWeatherPage() {
   const { weatherData, loading, error } = useTodayWeather();
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Cuaca Hari Ini</h1>
+    <div className="p-6 text-neutral-100">
+      <h1 className="font-roboto-500 text-[24px] mb-4">Cuaca Hari Ini</h1>
       {loading && <p>Memuat data cuaca...</p>}
       {error && <p className="text-red-500">{error}</p>}
       {!loading && !error && weatherData.length > 0 && (
@@ -25,23 +25,38 @@ export default function TodayWeatherPage() {
 
                 {/* Informasi */}
                 <td className="p-3">
-                  <h2 className="text-sm font-semibold">{weather.main}</h2>
-                  <p className="text-gray-500 text-xs">{weather.description}</p>
+                  <h2 className="font-roboto-700 text-[20px]">
+                    {weather.main}
+                  </h2>
+                  <p className="font-roboto-300 text-[14px]">
+                    {weather.description}
+                  </p>
                 </td>
 
                 {/* Detail Cuaca */}
                 <td className="p-3 text-left">
-                  <p className="text-xs">
+                  <p className="font-roboto-300 text-[14px]">
                     Suhu: {weather.temp}°C
                   </p>
-                  <p className="text-xs">
+                  <p className="font-roboto-300 text-[14px]">
                     Kelembaban: {weather.humidity}%
                   </p>
-                  <p className="text-xs">
+                  <p className="font-roboto-300 text-[14px]">
                     Kecepatan Angin: {weather.wind_speed} m/s
                   </p>
-                  <p className="text-xs text-gray-400">
-                    {new Date(weather.date_time).toLocaleDateString()}
+                  <p className="text-gray-400 text-[14px]">
+                    {new Date(weather.date_time).toLocaleDateString("id-ID", {
+                      weekday: "long", // Hari
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </p>
+                  <p className="text-gray-400 text-[14px]">
+                    {new Date(weather.date_time).toLocaleTimeString("id-ID", {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
                   </p>
                 </td>
               </tr>

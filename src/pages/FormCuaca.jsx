@@ -56,7 +56,7 @@ export default function FormCuaca() {
           </div>
 
           {/* Content */}
-          <div className="relative">
+          <div className="relative lg:pl-64">
             {/* Navbar Component */}
             <NavbarComponent />
 
