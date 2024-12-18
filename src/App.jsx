@@ -29,6 +29,8 @@ import AdminKategoriPage from "./pages/AdminKategoriPage";
 import UserNotificationPage from "./pages/UserNotificationPage";
 import AdminNotificationPage from "./pages/AdminNotificationPage";
 import HomePage from "./pages/HomePage";
+import AdminStepPlantsPage from "./pages/AdminStepPlantsPage";
+import AdminPerawatanPage from "./pages/AdminPerawatanPage";
 
 function App() {
   return (
@@ -73,6 +75,7 @@ function App() {
         <Route element={<AdminProtectedRoutes />}>
           <Route path="/dashboard" element={<AdminArticlePage />} />
           <Route path="/admin-article" element={<AdminArticlePage />} />
+          <Route path="/admin-perawatan" element={<AdminPerawatanPage />} />
           <Route path="/admin-komunitas" element={<AdminCommunityPage />} />
           <Route
             path="/admin-komunitas/actions/:postId"
@@ -82,6 +85,10 @@ function App() {
           <Route
             path="/admin-notification"
             element={<AdminNotificationPage />}
+          />
+          <Route
+            path="/admin-step-plants/:plantId"
+            element={<AdminStepPlantsPage />}
           />
         </Route>
       </Routes>
