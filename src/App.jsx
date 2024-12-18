@@ -8,6 +8,9 @@ import PerawatanTanaman from "./pages/PerawatanTanaman";
 import UserProtectedRoutes from "./routes/UserProtectedRoutes";
 import AdminProtectedRoutes from "./routes/AdminProtectedRoutes";
 import AlertPassword from "./components/AlertPassword";
+import CarePage from "./pages/CarePage";
+import DetailEnrollment from "./pages/DetailEnrollment";
+
 
 import SideAndNav from "./pages/SideAndNav";
 import HeroCuaca from "./pages/HeroCuaca";
@@ -41,7 +44,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/sidenav" element={<SideAndNav />} />
-        <Route path="/perawatan" element={<PerawatanTanaman />} />
+        
 
         {/* User Private Route */}
         <Route element={<UserProtectedRoutes />}>
@@ -54,6 +57,9 @@ function App() {
           <Route path="/dailyweather" element={<DailyWeatherPage />} />
           <Route path="/chatbot" element={<ChatbotPage />} />
           <Route path="/jadwal-penyiraman" element={<WateringSchedulePage />} />
+          <Route path="/care/:id" element={<CarePage />} />
+          <Route path="/perawatan-tanaman/:enrollmentId" element={<DetailEnrollment />} />
+          <Route path="/perawatan" element={<PerawatanTanaman />} />
           <Route
             path="/jadwal-penyiraman/add"
             element={<WateringScheduleFormPage />}
