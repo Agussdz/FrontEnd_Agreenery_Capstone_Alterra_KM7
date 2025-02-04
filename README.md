@@ -1,8 +1,6 @@
-# React + Vite
+# Agreenery Capstone Demo Videos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This video demonstrates the key features and functionality of our newly developed website. We showcase the user interface, navigation, and core functionalities that make our website unique and user-friendly.
 
-Currently, two official plugins are available:
+[https://drive.google.com/drive/folders/1Ai5lZuIkeqQ-pkVkYDI6wggMdLmQ1M32?usp=sharing](url)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
